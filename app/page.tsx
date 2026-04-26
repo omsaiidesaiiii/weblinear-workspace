@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
+import { ThemeToggle } from "@/components/theme-toggle";
+
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -17,7 +19,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-black font-inter">
+    <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
       
       {/* Hero Section */}
       <section className="relative w-full min-h-screen flex flex-col items-center overflow-hidden">
@@ -37,11 +39,13 @@ export default function Home() {
 
         {/* Navbar Overlay */}
         <header
-          className={`absolute top-0 w-full z-30 transition-all duration-300 ${
-            scrolled ? "backdrop-blur-md bg-black/20" : "bg-transparent"
+          className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-7xl transition-all duration-300 ${
+            scrolled ? "" : ""
           }`}
         >
-          <div className="flex items-center justify-between px-6 lg:px-[120px] py-[16px]">
+          <div className={`flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 ${
+            scrolled ? "backdrop-blur-md bg-background/70 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]" : "bg-transparent"
+          }`}>
             {/* Logo */}
             <div className="flex items-center">
               <svg
@@ -50,7 +54,7 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-white"
+                className="text-white dark:text-white"
               >
                 <path
                   d="M12 2L2 7L12 12L22 7L12 2Z"
@@ -99,34 +103,41 @@ export default function Home() {
 
             {/* Desktop Buttons */}
             <div className="hidden lg:flex items-center space-x-4">
-              <button className="bg-white border border-[#d4d4d4] text-[#171717] rounded-[8px] font-manrope font-semibold text-[14px] px-5 py-2 hover:bg-gray-50 transition-colors">
+              <ThemeToggle />
+              <button className="bg-white border border-[#d4d4d4] text-[#171717] rounded-full font-manrope font-semibold text-[14px] px-5 py-2 hover:bg-gray-50 transition-colors">
                 Sign In
               </button>
-              <button className="bg-[#7b39fc] text-white rounded-[8px] shadow-sm font-manrope font-semibold text-[14px] px-5 py-2 hover:brightness-110 transition-all hover:scale-105">
+              <button className="bg-[#7b39fc] text-white rounded-full shadow-sm font-manrope font-semibold text-[14px] px-5 py-2 hover:brightness-110 transition-all hover:scale-105">
                 Get Started
               </button>
             </div>
 
             {/* Mobile Menu Toggle */}
-            <button
-              className="lg:hidden text-white"
-              onClick={() => setIsMobileMenuOpen(true)}
-            >
-              <Menu className="w-6 h-6" />
-            </button>
+            <div className="lg:hidden flex items-center space-x-4">
+              <ThemeToggle />
+              <button
+                className="text-white"
+                onClick={() => setIsMobileMenuOpen(true)}
+              >
+                <Menu className="w-6 h-6" />
+              </button>
+            </div>
           </div>
         </header>
 
         {/* Mobile Fullscreen Menu */}
         {isMobileMenuOpen && (
-          <div className="fixed inset-0 z-50 bg-black flex flex-col text-white animate-in fade-in zoom-in-95 duration-200">
+          <div className="fixed inset-0 z-50 bg-background flex flex-col text-foreground animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-6 py-[16px]">
               <span className="font-manrope font-bold text-lg tracking-tight">
                 Weblinear
               </span>
-              <button onClick={() => setIsMobileMenuOpen(false)}>
-                <X className="w-6 h-6" />
-              </button>
+              <div className="flex items-center space-x-4">
+                <ThemeToggle />
+                <button onClick={() => setIsMobileMenuOpen(false)}>
+                  <X className="w-6 h-6" />
+                </button>
+              </div>
             </div>
             <div className="flex flex-col items-center justify-center flex-1 space-y-8">
               <a href="#" className="font-manrope text-2xl font-medium">Home</a>
@@ -134,7 +145,7 @@ export default function Home() {
               <a href="#" className="font-manrope text-2xl font-medium">Reviews</a>
               <a href="#" className="font-manrope text-2xl font-medium">Contact us</a>
               <div className="flex flex-col space-y-4 pt-8 w-full px-12">
-                <button className="w-full bg-white text-[#171717] rounded-[8px] font-manrope font-semibold text-[16px] py-3">
+                <button className="w-full bg-primary text-primary-foreground rounded-[8px] font-manrope font-semibold text-[16px] py-3">
                   Sign In
                 </button>
                 <button className="w-full bg-[#7b39fc] text-white rounded-[8px] font-manrope font-semibold text-[16px] py-3">
@@ -203,15 +214,15 @@ export default function Home() {
       </section>
 
       {/* Value Proposition Section */}
-      <section className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 border-t border-white/5 relative z-10">
+      <section className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 border-t border-border relative z-10">
         <div className="flex flex-col items-center text-center max-w-4xl mx-auto">
           {/* Section Heading */}
-          <h2 className="font-instrument text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
+          <h2 className="font-instrument text-foreground text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
             Everything Your Business Needs — In One Place
           </h2>
 
           {/* Section Content */}
-          <p className="font-inter text-[18px] text-white/70 max-w-2xl leading-relaxed mb-16">
+          <p className="font-inter text-[18px] text-muted-foreground max-w-2xl leading-relaxed mb-16">
             Stop switching between multiple tools. Weblinear Workspace brings
             your entire business ecosystem together — so you can focus on
             growth, not complexity.
@@ -220,28 +231,28 @@ export default function Home() {
           {/* 3 Highlights Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 w-full">
             {/* Highlight 1 */}
-            <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] hover:border-white/20 transition-all group backdrop-blur-sm relative overflow-hidden">
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-muted/50 border border-border hover:bg-muted hover:border-accent transition-all group backdrop-blur-sm relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-[#7b39fc]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="text-4xl mb-6 transform group-hover:scale-110 group-hover:-translate-y-1 transition-all">🚀</div>
-              <p className="font-manrope font-semibold text-white text-lg leading-snug">
+              <p className="font-manrope font-semibold text-foreground text-lg leading-snug">
                 Save 10+ hours every week with automation
               </p>
             </div>
 
             {/* Highlight 2 */}
-            <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] hover:border-white/20 transition-all group backdrop-blur-sm relative overflow-hidden">
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-muted/50 border border-border hover:bg-muted hover:border-accent transition-all group backdrop-blur-sm relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-[#7b39fc]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="text-4xl mb-6 transform group-hover:scale-110 group-hover:-translate-y-1 transition-all">📊</div>
-              <p className="font-manrope font-semibold text-white text-lg leading-snug">
+              <p className="font-manrope font-semibold text-foreground text-lg leading-snug">
                 Make smarter decisions with real-time insights
               </p>
             </div>
 
             {/* Highlight 3 */}
-            <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-white/[0.02] border border-white/10 hover:bg-white/[0.04] hover:border-white/20 transition-all group backdrop-blur-sm relative overflow-hidden">
+            <div className="flex flex-col items-center text-center p-8 rounded-2xl bg-muted/50 border border-border hover:bg-muted hover:border-accent transition-all group backdrop-blur-sm relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-b from-[#7b39fc]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity"></div>
               <div className="text-4xl mb-6 transform group-hover:scale-110 group-hover:-translate-y-1 transition-all">🔗</div>
-              <p className="font-manrope font-semibold text-white text-lg leading-snug">
+              <p className="font-manrope font-semibold text-foreground text-lg leading-snug">
                 Seamlessly connect all departments
               </p>
             </div>
@@ -250,7 +261,7 @@ export default function Home() {
       </section>
 
       {/* Social Proof Section */}
-      <section className="w-full bg-[#0a0812] border-t border-white/5 py-24 relative z-10 overflow-hidden">
+      <section className="w-full bg-background border-t border-border py-24 relative z-10 overflow-hidden">
         {/* Subtle background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-[#7b39fc]/10 blur-[100px] rounded-full pointer-events-none"></div>
         
@@ -306,7 +317,7 @@ export default function Home() {
       </section>
 
       {/* Business Intelligence Section */}
-      <section className="w-full bg-black py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-background py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
             
@@ -381,7 +392,7 @@ export default function Home() {
       </section>
 
       {/* Accounts & Finance Section */}
-      <section className="w-full bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-background py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           {/* Reverse grid layout: Image left, Text right */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
@@ -450,7 +461,7 @@ export default function Home() {
       </section>
 
       {/* CRM Section (Bento Grid Layout) */}
-      <section className="w-full bg-black py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-background py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16">
@@ -564,7 +575,7 @@ export default function Home() {
       </section>
 
       {/* HR Management Section */}
-      <section className="w-full bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-background py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-12 items-center">
             
@@ -645,7 +656,7 @@ export default function Home() {
       </section>
 
       {/* Project Management Section (Full Width) */}
-      <section className="w-full bg-black py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-background py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border">
         <div className="max-w-7xl mx-auto px-6 lg:px-8 mb-16 text-center">
           <div className="inline-flex items-center justify-center space-x-2 bg-[#7b39fc]/10 border border-[#7b39fc]/30 rounded-full px-3 py-1 w-fit mb-6 mx-auto">
             <span className="text-[#a484d7] font-manrope text-sm font-semibold tracking-wide uppercase">
