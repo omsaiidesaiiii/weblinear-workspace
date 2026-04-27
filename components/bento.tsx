@@ -38,11 +38,11 @@ export default function ValuePropBento() {
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16">
         <BlurText
           text="Everything Your Business Needs — In One Place"
-          className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6"
+          className="font-semibold text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6"
           as="h2"
           delay={150}
         />
-        <p className="font-inter text-[18px] text-muted-foreground dark:text-white/70 max-w-2xl leading-relaxed">
+        <p className="font-normal text-[18px] text-muted-foreground dark:text-white/70 max-w-2xl leading-relaxed">
           Stop switching between multiple tools. Weblinear Workspace brings
           your entire business ecosystem together — so you can focus on
           growth, not complexity.
@@ -118,13 +118,13 @@ export function BentoCard({
         )}
       </div>
       <div className="relative p-10 z-20 mt-auto backdrop-blur-xl bg-card/80 dark:bg-[#110e1a]/60 border-t border-border dark:border-white/5 flex flex-col justify-end">
-        <h3 className="font-manrope text-sm font-semibold tracking-wide uppercase text-primary dark:text-[#a484d7] mb-2">
+        <h3 className="font-medium text-sm tracking-wide uppercase text-primary dark:text-[#a484d7] mb-2">
           {eyebrow}
         </h3>
-        <p className="text-2xl font-medium tracking-tight text-foreground dark:text-white mb-3">
+        <p className="text-2xl font-semibold tracking-tight text-foreground dark:text-white mb-3">
           {title}
         </p>
-        <p className="text-sm/6 text-muted-foreground dark:text-white/60">
+        <p className="font-normal text-sm/6 text-muted-foreground dark:text-white/60">
           {description}
         </p>
       </div>

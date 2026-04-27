@@ -149,30 +149,30 @@ export default function CTAWithVerticalMarquee() {
           {/* Left Content */}
           <div className="space-y-6 max-w-xl">
             <div className="inline-flex items-center bg-card dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-xl rounded-full h-[32px] px-5 mb-2 shadow-sm dark:shadow-2xl">
-              <span className="text-foreground dark:text-white/80 font-inter font-medium text-[13px] tracking-tight">
+              <span className="text-foreground dark:text-white/80 font-medium text-[13px] tracking-tight">
                 Weblinear Workspace
               </span>
             </div>
             
-            <div className="text-5xl md:text-6xl lg:text-[70px] font-instrument font-medium leading-[1.05] tracking-tighter text-foreground dark:text-white">
+            <div className="text-5xl md:text-6xl lg:text-[70px] font-semibold leading-[1.05] tracking-tighter text-foreground dark:text-white">
               <BlurText text="Get Started" delay={100} stepDuration={0.3} animateBy="words" as="div" centered={false} />
               <BlurText text="in Minutes" delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block" as="div" centered={false} />
             </div>
             
-            <p className="text-lg md:text-xl text-muted-foreground dark:text-white/50 font-inter leading-relaxed max-w-md">
+            <p className="font-normal text-lg md:text-xl text-muted-foreground dark:text-white/50 leading-relaxed max-w-md">
               Start getting more distribution and ROI out of your content and business operations.
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
               <PremiumButton 
-                className="px-10 py-4 text-[15px] uppercase"
+                className="px-10 py-4 text-[15px] uppercase font-semibold"
                
               >
                 START FREE TRIAL
               </PremiumButton>
               <PremiumButton 
                 variant="secondary" 
-                className="px-10 py-4 text-[15px] !font-semibold font-manrope hover:!bg-secondary dark:hover:!bg-white/10"
+                className="px-10 py-4 text-[15px] font-semibold hover:!bg-secondary dark:hover:!bg-white/10"
               >
                 BOOK A DEMO
               </PremiumButton>
@@ -186,7 +186,7 @@ export default function CTAWithVerticalMarquee() {
                 {marqueeItems.map((item, idx) => (
                   <div
                     key={idx}
-                    className="text-4xl md:text-5xl lg:text-6xl font-instrument tracking-tight py-6 marquee-item text-center transition-all duration-300"
+                    className="text-4xl md:text-5xl lg:text-6xl tracking-tight py-6 marquee-item text-center transition-all duration-300"
                   >
                     {item}
                   </div>

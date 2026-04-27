@@ -13,7 +13,7 @@ export default function Logos() {
       className="w-full py-10 bg-background border-b border-border"
     >
       <div className="max-w-7xl mx-auto px-6 text-center">
-        <p className="font-inter text-sm text-muted-foreground mb-6 tracking-wide uppercase">
+        <p className="font-normal text-sm text-muted-foreground mb-6 tracking-wide uppercase">
           Trusted by growing businesses to automate operations and boost
           efficiency
         </p>

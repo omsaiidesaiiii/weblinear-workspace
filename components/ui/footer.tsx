@@ -134,14 +134,14 @@ export default function Footer() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="text-foreground dark:text-white font-instrument font-bold text-2xl tracking-tight">
+              <span className="text-foreground dark:text-white font-bold text-2xl tracking-tight">
                 Weblinear
               </span>
             </div>
-            <p className="text-muted-foreground dark:text-white/40 font-inter text-sm leading-relaxed max-w-xs">
+            <p className="font-normal text-muted-foreground dark:text-white/40 text-sm leading-relaxed max-w-xs">
               The modern business operating system designed for teams who value speed, beauty, and unified workflows.
             </p>
-            <p className="text-muted-foreground/60 dark:text-white/20 font-inter text-xs pt-4">
+            <p className="font-normal text-muted-foreground/60 dark:text-white/20 text-xs pt-4">
               © {new Date().getFullYear()} Weblinear Inc. All rights reserved.
             </p>
           </AnimatedContainer>
@@ -150,7 +150,7 @@ export default function Footer() {
             {footerLinks.map((section, index) => (
               <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
                 <div className="space-y-6">
-                  <h3 className="text-foreground dark:text-white font-manrope font-semibold text-xs uppercase tracking-widest opacity-90">
+                  <h3 className="text-foreground dark:text-white font-medium text-xs uppercase tracking-widest opacity-90">
                     {section.label}
                   </h3>
                   <ul className="space-y-4">
@@ -158,7 +158,7 @@ export default function Footer() {
                       <li key={link.title}>
                         <Link
                           href={link.href}
-                          className="text-muted-foreground dark:text-white/40 hover:text-primary dark:hover:text-[#a484d7] font-inter text-sm flex items-center transition-all duration-300 group"
+                          className="font-normal text-muted-foreground dark:text-white/40 hover:text-primary dark:hover:text-[#a484d7] text-sm flex items-center transition-all duration-300 group"
                         >
                           {link.icon && <link.icon className="mr-2 size-4 opacity-50 group-hover:opacity-100 transition-opacity" />}
                           {link.title}

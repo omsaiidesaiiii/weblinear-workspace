@@ -12,7 +12,7 @@ import Footer from "@/components/landing/Footer";
 
 export default function Home() {
   return (
-    <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
+    <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background transition-colors duration-500">
       <Navbar />
       <Hero />
       <Logos />

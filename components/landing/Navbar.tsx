@@ -52,7 +52,7 @@ export default function Navbar() {
               strokeLinejoin="round"
             />
           </svg>
-          <span className="ml-2 text-foreground font-manrope font-bold text-lg tracking-tight">
+          <span className="ml-2 text-foreground font-bold text-lg tracking-tight">
             Weblinear
           </span>
         </div>
@@ -71,7 +71,7 @@ export default function Navbar() {
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 * i + 0.5, duration: 0.5 }}
-              className="flex items-center font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
+              className="flex items-center font-normal text-[14px] text-foreground hover:opacity-80 transition-opacity"
             >
               {link.name} {link.hasChevron && <ChevronDown className="ml-1 w-4 h-4" />}
             </motion.a>
@@ -88,11 +88,11 @@ export default function Navbar() {
           <ThemeToggle />
           <PremiumButton 
             variant="secondary" 
-            className="!text-[14px] !px-5 !py-2 !font-semibold font-manrope hover:!bg-secondary dark:hover:!bg-white/10"
+            className="!text-[14px] !px-5 !py-2 font-semibold hover:!bg-secondary dark:hover:!bg-white/10"
           >
             Sign In
           </PremiumButton>
-          <PremiumButton className="!text-[14px] !px-5 !py-2 !font-semibold font-manrope">
+          <PremiumButton className="!text-[14px] !px-5 !py-2 font-semibold">
             Get Started
           </PremiumButton>
         </motion.div>
@@ -113,7 +113,7 @@ export default function Navbar() {
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 bg-background flex flex-col text-foreground animate-in fade-in zoom-in-95 duration-200">
           <div className="flex items-center justify-between px-6 py-[16px]">
-            <span className="font-manrope font-bold text-lg tracking-tight">
+            <span className="font-bold text-lg tracking-tight">
               Weblinear
             </span>
             <div className="flex items-center space-x-4">
@@ -124,26 +124,26 @@ export default function Navbar() {
             </div>
           </div>
           <div className="flex flex-col items-center justify-center flex-1 space-y-8">
-            <a href="#" className="font-manrope text-2xl font-medium">
+            <a href="#" className="font-normal text-2xl">
               Home
             </a>
-            <a href="#" className="font-manrope text-2xl font-medium">
+            <a href="#" className="font-normal text-2xl">
               Services
             </a>
-            <a href="#" className="font-manrope text-2xl font-medium">
+            <a href="#" className="font-normal text-2xl">
               Reviews
             </a>
-            <a href="#" className="font-manrope text-2xl font-medium">
+            <a href="#" className="font-normal text-2xl">
               Contact us
             </a>
             <div className="flex flex-col space-y-4 pt-8 w-full px-12">
               <PremiumButton 
                 variant="secondary" 
-                className="w-full !text-[16px] !py-3 rounded-[8px] !font-semibold font-manrope"
+                className="w-full !text-[16px] !py-3 rounded-[8px] font-semibold"
               >
                 Sign In
               </PremiumButton>
-              <PremiumButton className="w-full !text-[16px] !py-3 rounded-[8px] !font-semibold font-manrope">
+              <PremiumButton className="w-full !text-[16px] !py-3 rounded-[8px] font-semibold">
                 Get Started
               </PremiumButton>
             </div>

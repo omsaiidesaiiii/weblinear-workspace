@@ -128,8 +128,8 @@ export function ProjectShowcase() {
     >
       {/* Background Section Header - More compact */}
       <div className="flex flex-col mb-10">
-        <span className="text-purple-500 font-manrope text-[12px] font-semibold tracking-widest uppercase mb-3">Core Modules</span>
-        <div className="font-instrument text-foreground dark:text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
+        <span className="text-purple-500 font-medium text-[12px] tracking-widest uppercase mb-3">Core Modules</span>
+        <div className="font-semibold text-foreground dark:text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
           <BlurText text="One workspace" delay={100} stepDuration={0.3} animateBy="words" as="div" centered={false} />
           <BlurText text="for everything." delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block mt-1" as="div" centered={false} />
         </div>
@@ -187,7 +187,7 @@ export function ProjectShowcase() {
               <div className="relative flex items-center justify-between gap-6">
                 <div className="flex-1 min-w-0">
                   <div className="inline-flex items-center gap-3">
-                    <h3 className={`font-instrument text-xl md:text-3xl text-foreground dark:text-white transition-all duration-500 ${hoveredIndex === index ? "translate-x-3" : ""}`}>
+                    <h3 className={`font-semibold text-xl md:text-3xl text-foreground dark:text-white transition-all duration-500 ${hoveredIndex === index ? "translate-x-3" : ""}`}>
                       {module.title}
                     </h3>
 
@@ -206,7 +206,7 @@ export function ProjectShowcase() {
 
                   <p
                     className={`
-                      font-inter text-sm md:text-base mt-2 max-w-lg transition-all duration-500
+                      font-normal text-sm md:text-base mt-2 max-w-lg transition-all duration-500
                       ${hoveredIndex === index ? "text-foreground dark:text-white/80 translate-x-3" : "text-muted-foreground dark:text-white/30"}
                     `}
                   >
@@ -217,7 +217,7 @@ export function ProjectShowcase() {
                 <div className="flex flex-col items-end gap-1.5 shrink-0">
                   <span
                     className={`
-                      font-inter text-[10px] md:text-xs font-semibold tracking-widest uppercase transition-all duration-500
+                      font-medium text-[10px] md:text-xs tracking-widest uppercase transition-all duration-500
                       ${hoveredIndex === index ? "text-primary dark:text-purple-400 translate-x-[-6px]" : "text-muted-foreground dark:text-white/20"}
                     `}
                   >

@@ -92,11 +92,11 @@ export default function Testimonials() {
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 lg:mb-24">
           <BlurText
             text="Trusted by Visionary Teams"
-            className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6"
+            className="font-semibold text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6"
             as="h2"
             delay={150}
           />
-          <p className="font-inter text-[18px] text-muted-foreground dark:text-white/70 leading-relaxed">
+          <p className="font-normal text-[18px] text-muted-foreground dark:text-white/70 leading-relaxed">
             See how companies are accelerating their growth and simplifying
             their operations with Weblinear Workspace.
           </p>

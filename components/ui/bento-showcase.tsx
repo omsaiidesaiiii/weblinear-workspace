@@ -293,7 +293,7 @@ export default function BentoShowcase() {
 
           {/* 4. Performance - Standard (2x1) */}
           <motion.div
-            className="showcase-card md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-400/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
+            className="showcase-card md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-400/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl "
             whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
@@ -304,7 +304,7 @@ export default function BentoShowcase() {
                 <Zap className="w-5 h-5" />
                 <h3 className="font-instrument text-xl text-foreground dark:text-white font-medium">Live Analytics</h3>
               </div>
-              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1">Real-time performance tracking with sub-second latency.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1 ">Real-time sub-second performance tracking.</p>
             </div>
           </motion.div>
 

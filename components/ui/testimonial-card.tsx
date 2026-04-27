@@ -35,7 +35,7 @@ export function TestimonialCard({
             </svg>
           ))}
         </div>
-        <p className="font-inter text-foreground dark:text-white/80 text-lg mb-8 relative z-10 leading-relaxed italic">
+        <p className="font-medium text-foreground dark:text-white/80 text-lg mb-8 relative z-10 leading-relaxed italic">
           "{content}"
         </p>
       </div>
@@ -51,8 +51,8 @@ export function TestimonialCard({
           </div>
         </div>
         <div>
-          <h4 className="font-manrope font-semibold text-foreground dark:text-white">{name}</h4>
-          <p className="font-inter text-sm text-muted-foreground dark:text-white/50">{role}</p>
+          <h4 className="font-semibold text-foreground dark:text-white">{name}</h4>
+          <p className="font-normal text-sm text-muted-foreground dark:text-white/50">{role}</p>
         </div>
       </div>
     </div>

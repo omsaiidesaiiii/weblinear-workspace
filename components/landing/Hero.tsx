@@ -17,16 +17,16 @@ export default function Hero() {
           transition={{ duration: 0.5 }}
           className="flex items-center bg-card dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-xl rounded-full h-[32px] pl-1 pr-4 mb-8 shadow-sm dark:shadow-2xl"
         >
-          <span className="bg-primary text-primary-foreground rounded-full px-2.5 py-0.5 font-inter font-bold text-[10px] uppercase tracking-wider mr-3 ml-0.5">
+          <span className="bg-primary text-primary-foreground rounded-full px-2.5 py-0.5 font-bold text-[10px] uppercase tracking-wider mr-3 ml-0.5">
             New
           </span>
-          <span className="text-foreground dark:text-white/80 font-inter font-medium text-[13px] tracking-tight">
+          <span className="text-foreground dark:text-white/80 font-medium text-[13px] tracking-tight">
             Weblinear Workspace v3.2 is here
           </span>
         </motion.div>
 
         {/* Headline */}
-        <div className="font-instrument text-foreground dark:text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
+        <div className="font-bold text-foreground dark:text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
           <BlurText text="Run Your Business" delay={100} stepDuration={0.3} animateBy="words" as="div" />
           <BlurText text="from One Workspace" delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block mt-2" as="div" />
         </div>
@@ -34,7 +34,7 @@ export default function Hero() {
         {/* Subheadline */}
         <BlurText
           text="A deeply integrated platform designed for teams who value speed and simplicity. Manage everything in one place."
-          className="font-inter text-[18px] md:text-[20px] text-muted-foreground dark:text-white/50 max-w-[600px] mt-8 leading-relaxed mx-auto text-center"
+          className="font-medium text-[18px] md:text-[20px] text-muted-foreground dark:text-white/50 max-w-[600px] mt-8 leading-relaxed mx-auto text-center"
           as="p"
           delay={600}
           stepDuration={0.05}
@@ -49,13 +49,13 @@ export default function Hero() {
           className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12"
         >
           <PremiumButton 
-            className="px-10 py-4 text-[15px]"
+            className="px-10 py-4 text-[15px] font-semibold"
           >
             Start Free Trial
           </PremiumButton>
           <PremiumButton 
             variant="secondary" 
-            className="px-10 py-4 text-[15px] !font-semibold font-inter hover:!bg-secondary dark:hover:!bg-white/10"
+            className="px-10 py-4 text-[15px] font-semibold hover:!bg-secondary dark:hover:!bg-white/10"
           >
             Book a Demo
           </PremiumButton>
