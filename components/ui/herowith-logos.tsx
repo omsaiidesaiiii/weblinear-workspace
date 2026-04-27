@@ -12,12 +12,8 @@ const FUIHeroWithBorders = ({ children }: { children?: React.ReactNode }) => {
             {/* Bottom Curve/Glow */}
             <div className="absolute left-1/2 top-[calc(100%-100px)] lg:top-[calc(100%-165px)] h-[550px] w-[800px] md:h-[550px] md:w-[1200px] lg:h-[820px] lg:w-[115%] -translate-x-1/2 rounded-[100%] border border-border dark:border-purple-500/20 bg-card dark:bg-[#0a0812] dark:bg-[radial-gradient(closest-side,#130d2b_85%,#7c3aed)] pointer-events-none z-0 opacity-90 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_-10px_40px_rgba(124,58,237,0.1)]"></div>
             
-            {/* Grid Borders */}
-            <div className="absolute left-0 top-0 z-0 grid h-full w-full grid-cols-[clamp(28px,10vw,120px)_auto_clamp(28px,10vw,120px)] border-b border-black/5 dark:border-white/5 pointer-events-none">
-                <div className="col-span-1 flex h-full items-center justify-center" />
-                <div className="col-span-1 flex h-full items-center justify-center border-x border-black/5 dark:border-white/10" />
-                <div className="col-span-1 flex h-full items-center justify-center" />
-            </div>
+            {/* Full Background Grid */}
+            <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(0,0,0,0.05)_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:6rem_6rem] [mask-image:radial-gradient(ellipse_80%_80%_at_50%_0%,#000_40%,transparent_100%)] pointer-events-none z-0" />
             
             {/* Decorative Figures */}
             <figure className="bg-purple-500/30 dark:bg-purple-500/20 pointer-events-none absolute -bottom-[70%] left-1/2 z-0 block aspect-square w-[520px] -translate-x-1/2 rounded-full blur-[150px] dark:blur-[200px]" />
