@@ -23,17 +23,14 @@ export default function Home() {
   return (
     <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
       
-      {/* Hero Section */}
-      <FUIHeroWithBorders>
-
-        {/* Navbar Overlay */}
-        <header
-          className={`fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-7xl transition-all duration-300 ${
-            scrolled ? "" : ""
-          }`}
-        >
+      {/* Navbar Overlay */}
+      <header
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-2rem)] max-w-7xl transition-all duration-300 ${
+          scrolled ? "" : ""
+        }`}
+      >
           <div className={`flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 ${
-            scrolled ? "backdrop-blur-md bg-background/70 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]" : "bg-transparent"
+            scrolled ? "backdrop-blur-sm bg-background/50 border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.2)]" : "bg-transparent"
           }`}>
             {/* Logo */}
             <div className="flex items-center">
@@ -43,7 +40,7 @@ export default function Home() {
                 viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="text-white dark:text-white"
+                className="text-foreground dark:text-white"
               >
                 <path
                   d="M12 2L2 7L12 12L22 7L12 2Z"
@@ -57,7 +54,7 @@ export default function Home() {
                   strokeLinejoin="round"
                 />
               </svg>
-              <span className="ml-2 text-white font-manrope font-bold text-lg tracking-tight">
+              <span className="ml-2 text-foreground font-manrope font-bold text-lg tracking-tight">
                 Weblinear
               </span>
             </div>
@@ -66,25 +63,25 @@ export default function Home() {
             <nav className="hidden lg:flex items-center space-x-8">
               <a
                 href="#"
-                className="font-manrope font-medium text-[14px] text-white hover:opacity-80 transition-opacity"
+                className="font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
               >
                 Home
               </a>
               <a
                 href="#"
-                className="flex items-center font-manrope font-medium text-[14px] text-white hover:opacity-80 transition-opacity"
+                className="flex items-center font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
               >
                 Services <ChevronDown className="ml-1 w-4 h-4" />
               </a>
               <a
                 href="#"
-                className="font-manrope font-medium text-[14px] text-white hover:opacity-80 transition-opacity"
+                className="font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
               >
                 Reviews
               </a>
               <a
                 href="#"
-                className="font-manrope font-medium text-[14px] text-white hover:opacity-80 transition-opacity"
+                className="font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
               >
                 Contact us
               </a>
@@ -112,7 +109,7 @@ export default function Home() {
               </button>
             </div>
           </div>
-        </header>
+
 
         {/* Mobile Fullscreen Menu */}
         {isMobileMenuOpen && (
@@ -144,7 +141,10 @@ export default function Home() {
             </div>
           </div>
         )}
+      </header>
 
+      {/* Hero Section */}
+      <FUIHeroWithBorders>
         {/* Hero Content */}
         <div className="relative z-10 flex flex-col items-center text-center mt-32 lg:mt-40 px-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
           
