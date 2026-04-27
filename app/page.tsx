@@ -11,9 +11,52 @@ import { ProjectShowcase } from "@/components/ui/project-showcase";
 import ValuePropBento from "@/components/bento";
 
 
+import { Marquee } from "@/components/ui/marquee";
+import { TestimonialCard } from "@/components/ui/testimonial-card";
+
+
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const testimonials = [
+    {
+      name: "David Chen",
+      role: "Founder & CEO, VelocityTech",
+      content: "Weblinear replaced 4 different tools we were paying for. Our team is working faster, and our financial reporting has never been clearer.",
+      gradient: "from-[#7c3aed] to-[#4c1d95]"
+    },
+    {
+      name: "Elena Rodriguez",
+      role: "VP of Sales, OmniFlow",
+      content: "The CRM and automation tools alone are worth the price. We've cut down our lead response time from hours to literally seconds.",
+      gradient: "from-[#2d1b69] to-[#7c3aed]"
+    },
+    {
+      name: "Marcus Johnson",
+      role: "Director of HR, ShiftWorks",
+      content: "Onboarding new employees used to be a massive headache. Now it's a seamless, beautiful experience. Best HR software we've used.",
+      gradient: "from-[#4c1d95] to-[#2d1b69]"
+    },
+    {
+      name: "Sarah Jenkins",
+      role: "CTO, NexaGen",
+      content: "The developer experience and API integration are top-notch. It saved us months of custom development and lowered our overhead.",
+      gradient: "from-[#7c3aed] to-blue-600"
+    },
+    {
+      name: "Michael Wu",
+      role: "Operations Manager, PeakFlow",
+      content: "Finally, a platform that actually understands how modern teams collaborate. Our productivity has increased by 40% since switching.",
+      gradient: "from-blue-600 to-[#4c1d95]"
+    },
+    {
+      name: "Jessica Lee",
+      role: "Creative Director, BrightScale",
+      content: "The interface is beautiful and intuitive. It's rare to find a tool that combines deep functionality with such a clean aesthetic.",
+      gradient: "from-[#4c1d95] to-[#7c3aed]"
+    }
+  ];
 
   // Blur navbar on scroll
   useEffect(() => {
@@ -55,7 +98,6 @@ export default function Home() {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
-                  strokeLinejoin="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -216,7 +258,11 @@ export default function Home() {
       {/* Selected Projects Showcase */}
       <ProjectShowcase />
       {/* Testimonials Section */}
-      <section className="w-full bg-black py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+        {/* Background decorative elements to match hero */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#7c3aed]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4c1d95]/10 blur-[120px] rounded-full pointer-events-none"></div>
+
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 lg:mb-24">
@@ -228,72 +274,25 @@ export default function Home() {
             </p>
           </div>
 
-          {/* Masonry / Grid for Testimonials */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="relative flex flex-col items-center justify-center gap-8 py-10 overflow-hidden">
+            <Marquee className="[--duration:40s]" pauseOnHover repeat={4}>
+              {testimonials.slice(0, 3).map((testimonial, idx) => (
+                <TestimonialCard key={idx} {...testimonial} />
+              ))}
+            </Marquee>
+            <Marquee reverse className="[--duration:40s]" pauseOnHover repeat={4}>
+              {testimonials.slice(3).map((testimonial, idx) => (
+                <TestimonialCard key={idx} {...testimonial} />
+              ))}
+            </Marquee>
             
-            {/* Testimonial 1 */}
-            <div className="bg-[#110e1a] border border-white/10 rounded-3xl p-8 relative group hover:-translate-y-2 transition-transform duration-500">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-[#7b39fc]/10 blur-[50px] rounded-full pointer-events-none group-hover:bg-[#7b39fc]/20 transition-colors"></div>
-              <div className="flex space-x-1 mb-6">
-                {[1,2,3,4,5].map(star => <svg key={star} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
-              </div>
-              <p className="font-inter text-white/80 text-lg mb-8 relative z-10 leading-relaxed">
-                "Weblinear replaced 4 different tools we were paying for. Our team is working faster, and our financial reporting has never been clearer."
-              </p>
-              <div className="flex items-center space-x-4 relative z-10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-500 to-purple-500 p-[2px]">
-                  <div className="w-full h-full bg-black rounded-full border border-white/20"></div>
-                </div>
-                <div>
-                  <h4 className="font-manrope font-semibold text-white">David Chen</h4>
-                  <p className="font-inter text-sm text-white/50">Founder & CEO, VelocityTech</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Testimonial 2 */}
-            <div className="bg-[#110e1a] border border-white/10 rounded-3xl p-8 relative group hover:-translate-y-2 transition-transform duration-500 lg:translate-y-8">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/10 blur-[50px] rounded-full pointer-events-none group-hover:bg-blue-500/20 transition-colors"></div>
-              <div className="flex space-x-1 mb-6">
-                {[1,2,3,4,5].map(star => <svg key={star} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
-              </div>
-              <p className="font-inter text-white/80 text-lg mb-8 relative z-10 leading-relaxed">
-                "The CRM and automation tools alone are worth the price. We've cut down our lead response time from hours to literally seconds."
-              </p>
-              <div className="flex items-center space-x-4 relative z-10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-pink-500 to-orange-500 p-[2px]">
-                  <div className="w-full h-full bg-black rounded-full border border-white/20"></div>
-                </div>
-                <div>
-                  <h4 className="font-manrope font-semibold text-white">Elena Rodriguez</h4>
-                  <p className="font-inter text-sm text-white/50">VP of Sales, OmniFlow</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Testimonial 3 */}
-            <div className="bg-[#110e1a] border border-white/10 rounded-3xl p-8 relative group hover:-translate-y-2 transition-transform duration-500 md:col-span-2 lg:col-span-1">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-green-500/10 blur-[50px] rounded-full pointer-events-none group-hover:bg-green-500/20 transition-colors"></div>
-              <div className="flex space-x-1 mb-6">
-                {[1,2,3,4,5].map(star => <svg key={star} className="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" /></svg>)}
-              </div>
-              <p className="font-inter text-white/80 text-lg mb-8 relative z-10 leading-relaxed">
-                "Onboarding new employees used to be a massive headache. Now it's a seamless, beautiful experience. Best HR software we've used."
-              </p>
-              <div className="flex items-center space-x-4 relative z-10">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-tr from-[#7b39fc] to-[#a484d7] p-[2px]">
-                  <div className="w-full h-full bg-black rounded-full border border-white/20"></div>
-                </div>
-                <div>
-                  <h4 className="font-manrope font-semibold text-white">Marcus Johnson</h4>
-                  <p className="font-inter text-sm text-white/50">Director of HR, ShiftWorks</p>
-                </div>
-              </div>
-            </div>
-
+            {/* Edge Fades */}
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#0a0812]"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#0a0812]"></div>
           </div>
         </div>
       </section>
+
 
       {/* Pricing Section */}
       <section className="w-full bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
