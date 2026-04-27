@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import { cn } from "@/lib/utils";
 
 interface BlurTextProps {
   text: string;
@@ -12,6 +13,7 @@ interface BlurTextProps {
   easing?: [number, number, number, number] | string;
   animateBy?: "words" | "letters";
   as?: React.ElementType;
+  centered?: boolean;
 }
 
 export function BlurText({
@@ -23,6 +25,7 @@ export function BlurText({
   easing = "easeOut",
   animateBy = "words",
   as: Component = "p",
+  centered = true,
 }: BlurTextProps) {
   const ref = useRef<HTMLSpanElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-10% 0px" });
@@ -50,7 +53,7 @@ export function BlurText({
       opacity: 1,
       filter: "blur(0px)",
       y: 0,
-      transition: { duration: 0.8, ease: easing },
+      transition: { duration: 0.8, ease: easing as any },
     },
   };
 
@@ -60,7 +63,7 @@ export function BlurText({
         variants={container}
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
-        className="flex flex-wrap justify-center"
+        className={cn("flex flex-wrap", centered && "justify-center")}
       >
         {elements.map((element, i) => (
           <motion.span key={i} variants={item} className="inline-block">

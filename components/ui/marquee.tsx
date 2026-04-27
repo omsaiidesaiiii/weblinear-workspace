@@ -6,6 +6,7 @@ export function Marquee({
   repeat = 4,
   duration = 60,
   className,
+  pauseOnHover = true,
   ...props
 }: {
   children: React.ReactNode
@@ -13,6 +14,7 @@ export function Marquee({
   repeat?: number
   duration?: number
   className?: string
+  pauseOnHover?: boolean
 } & React.HTMLAttributes<HTMLDivElement>) {
   return (
     <div
@@ -31,7 +33,7 @@ export function Marquee({
             className={cn("flex shrink-0 justify-around [gap:var(--gap)]", {
               "animate-marquee-left": direction === "left",
               "animate-marquee-right": direction === "right",
-              "group-hover:[animation-play-state:paused]": true,
+              "group-hover:[animation-play-state:paused]": pauseOnHover,
             })}
           >
             {children}

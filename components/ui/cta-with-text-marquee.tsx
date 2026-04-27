@@ -155,8 +155,8 @@ export default function CTAWithVerticalMarquee() {
             </div>
             
             <div className="text-5xl md:text-6xl lg:text-[70px] font-instrument font-medium leading-[1.05] tracking-tighter text-foreground dark:text-white">
-              <BlurText text="Get Started" delay={100} stepDuration={0.3} animateBy="words" as="div" />
-              <BlurText text="in Minutes" delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block" as="div" />
+              <BlurText text="Get Started" delay={100} stepDuration={0.3} animateBy="words" as="div" centered={false} />
+              <BlurText text="in Minutes" delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block" as="div" centered={false} />
             </div>
             
             <p className="text-lg md:text-xl text-muted-foreground dark:text-white/50 font-inter leading-relaxed max-w-md">

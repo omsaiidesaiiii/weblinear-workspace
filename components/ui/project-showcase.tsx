@@ -130,8 +130,8 @@ export function ProjectShowcase() {
       <div className="flex flex-col mb-10">
         <span className="text-purple-500 font-manrope text-[12px] font-semibold tracking-widest uppercase mb-3">Core Modules</span>
         <div className="font-instrument text-foreground dark:text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
-          <BlurText text="One workspace" delay={100} stepDuration={0.3} animateBy="words" as="div" />
-          <BlurText text="for everything." delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block mt-1" as="div" />
+          <BlurText text="One workspace" delay={100} stepDuration={0.3} animateBy="words" as="div" centered={false} />
+          <BlurText text="for everything." delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block mt-1" as="div" centered={false} />
         </div>
       </div>
 
