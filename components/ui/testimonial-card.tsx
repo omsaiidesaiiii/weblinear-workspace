@@ -16,7 +16,7 @@ export function TestimonialCard({
   gradient = "from-[#7b39fc] to-[#a484d7]",
 }: TestimonialCardProps) {
   return (
-    <div className="bg-[#110e1a] border border-white/10 rounded-3xl p-8 relative group w-[400px] h-full flex flex-col justify-between overflow-hidden">
+    <div className="bg-card dark:bg-[#110e1a] border border-border dark:border-white/10 shadow-sm dark:shadow-none rounded-3xl p-8 relative group w-[400px] h-full flex flex-col justify-between overflow-hidden">
       <div className={cn(
         "absolute top-0 right-0 w-32 h-32 blur-[50px] rounded-full pointer-events-none opacity-20 group-hover:opacity-40 transition-opacity bg-gradient-to-br",
         gradient
@@ -35,14 +35,14 @@ export function TestimonialCard({
             </svg>
           ))}
         </div>
-        <p className="font-inter text-white/80 text-lg mb-8 relative z-10 leading-relaxed italic">
+        <p className="font-inter text-foreground dark:text-white/80 text-lg mb-8 relative z-10 leading-relaxed italic">
           "{content}"
         </p>
       </div>
 
       <div className="flex items-center space-x-4 relative z-10 mt-auto">
         <div className={cn("w-12 h-12 rounded-full p-[2px] bg-gradient-to-tr", gradient)}>
-          <div className="w-full h-full bg-black rounded-full border border-white/20 flex items-center justify-center text-white font-bold overflow-hidden">
+          <div className="w-full h-full bg-background dark:bg-black rounded-full border border-border dark:border-white/20 flex items-center justify-center text-foreground dark:text-white font-bold overflow-hidden">
             {avatar ? (
               <img src={avatar} alt={name} className="w-full h-full object-cover" />
             ) : (
@@ -51,8 +51,8 @@ export function TestimonialCard({
           </div>
         </div>
         <div>
-          <h4 className="font-manrope font-semibold text-white">{name}</h4>
-          <p className="font-inter text-sm text-white/50">{role}</p>
+          <h4 className="font-manrope font-semibold text-foreground dark:text-white">{name}</h4>
+          <p className="font-inter text-sm text-muted-foreground dark:text-white/50">{role}</p>
         </div>
       </div>
     </div>

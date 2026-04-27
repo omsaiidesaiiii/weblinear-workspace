@@ -105,27 +105,43 @@ export default function Footer() {
   return (
     <footer className="relative w-full max-w-7xl mx-auto mt-12 lg:mt-16">
       {/* Background Container with premium styling */}
-      <div className="relative w-full rounded-t-[2.5rem] lg:rounded-t-[4rem] border-t border-white/10 bg-[#0a0812] overflow-hidden px-6 py-12 lg:py-16">
+      <div className="relative w-full rounded-t-[2.5rem] lg:rounded-t-[4rem] border-t border-border dark:border-white/10 bg-background dark:bg-[#0a0812] overflow-hidden px-6 py-12 lg:py-16 shadow-[0_-20px_40px_-20px_rgba(0,0,0,0.05)] dark:shadow-none">
         
         {/* Premium Background Gradients matching Hero */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0a0812,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] z-0 pointer-events-none opacity-50" />
-        <div className="absolute left-1/2 -top-[100px] h-[300px] w-[1000px] lg:w-[120%] -translate-x-1/2 rounded-[100%] border border-purple-500/10 bg-[#0a0812] bg-[radial-gradient(closest-side,#130d2b_80%,#7c3aed)] pointer-events-none z-0 opacity-30 blur-sm shadow-[0_10px_40px_rgba(124,58,237,0.05)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/5 to-primary/10 dark:bg-none dark:bg-[linear-gradient(to_bottom,#0a0812,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] z-0 pointer-events-none opacity-50" />
+        <div className="absolute left-1/2 -top-[100px] h-[300px] w-[1000px] lg:w-[120%] -translate-x-1/2 rounded-[100%] border border-primary/10 dark:border-purple-500/10 bg-background dark:bg-[#0a0812] bg-[radial-gradient(closest-side,rgba(124,58,237,0.1)_80%,transparent)] dark:bg-[radial-gradient(closest-side,#130d2b_80%,#7c3aed)] pointer-events-none z-0 opacity-100 dark:opacity-30 blur-2xl dark:blur-sm shadow-[0_10px_40px_rgba(124,58,237,0.05)]"></div>
         
         {/* Glow Line at top */}
-        <div className="absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-purple-500/50 to-transparent rounded-full blur-sm z-10" />
+        <div className="absolute top-0 right-1/2 left-1/2 h-px w-1/3 -translate-x-1/2 -translate-y-1/2 bg-gradient-to-r from-transparent via-primary/30 dark:via-purple-500/50 to-transparent rounded-full blur-sm z-10" />
 
         <div className="relative z-10 grid w-full gap-12 xl:grid-cols-3 xl:gap-8">
           <AnimatedContainer className="space-y-6">
             <div className="flex items-center space-x-2">
-              <Hexagon className="size-8 text-[#a484d7]" fill="currentColor" fillOpacity="0.2" />
-              <span className="text-white font-instrument font-bold text-2xl tracking-tight">
+              <svg
+                width="32"
+                height="32"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-primary dark:text-[#a484d7]"
+              >
+                <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
+                <path
+                  d="M2 17L12 22L22 17M2 12L12 17L22 12"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                />
+              </svg>
+              <span className="text-foreground dark:text-white font-instrument font-bold text-2xl tracking-tight">
                 Weblinear
               </span>
             </div>
-            <p className="text-white/40 font-inter text-sm leading-relaxed max-w-xs">
+            <p className="text-muted-foreground dark:text-white/40 font-inter text-sm leading-relaxed max-w-xs">
               The modern business operating system designed for teams who value speed, beauty, and unified workflows.
             </p>
-            <p className="text-white/20 font-inter text-xs pt-4">
+            <p className="text-muted-foreground/60 dark:text-white/20 font-inter text-xs pt-4">
               © {new Date().getFullYear()} Weblinear Inc. All rights reserved.
             </p>
           </AnimatedContainer>
@@ -134,7 +150,7 @@ export default function Footer() {
             {footerLinks.map((section, index) => (
               <AnimatedContainer key={section.label} delay={0.1 + index * 0.1}>
                 <div className="space-y-6">
-                  <h3 className="text-white font-manrope font-semibold text-xs uppercase tracking-widest opacity-90">
+                  <h3 className="text-foreground dark:text-white font-manrope font-semibold text-xs uppercase tracking-widest opacity-90">
                     {section.label}
                   </h3>
                   <ul className="space-y-4">
@@ -142,7 +158,7 @@ export default function Footer() {
                       <li key={link.title}>
                         <Link
                           href={link.href}
-                          className="text-white/40 hover:text-[#a484d7] font-inter text-sm flex items-center transition-all duration-300 group"
+                          className="text-muted-foreground dark:text-white/40 hover:text-primary dark:hover:text-[#a484d7] font-inter text-sm flex items-center transition-all duration-300 group"
                         >
                           {link.icon && <link.icon className="mr-2 size-4 opacity-50 group-hover:opacity-100 transition-opacity" />}
                           {link.title}

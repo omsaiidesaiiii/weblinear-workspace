@@ -19,7 +19,7 @@ function TypeTester() {
   return (
     <div className="flex items-center justify-center h-full">
       <motion.span
-        className="font-instrument text-6xl md:text-8xl text-white font-medium"
+        className="font-instrument text-6xl md:text-8xl text-primary dark:text-white font-medium"
         animate={{ scale }}
         transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
       >
@@ -76,7 +76,7 @@ function SpeedIndicator() {
           {loading ? (
             <motion.div
               key="loader"
-              className="h-8 w-24 bg-white/10 rounded"
+              className="h-8 w-24 bg-muted dark:bg-white/10 rounded"
               initial={{ opacity: 0.5 }}
               animate={{ opacity: [0.4, 0.7, 0.4] }}
               exit={{ opacity: 0, y: -20, position: 'absolute' }}
@@ -87,15 +87,15 @@ function SpeedIndicator() {
               key="text"
               initial={{ y: 20, opacity: 0, filter: "blur(5px)" }}
               animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
-              className="text-3xl md:text-4xl font-instrument font-medium text-white"
+              className="text-3xl md:text-4xl font-instrument font-medium text-primary dark:text-white"
             >
               99.9%
             </motion.span>
           )}
         </AnimatePresence>
       </div>
-      <span className="text-sm text-purple-300/60 font-manrope font-semibold uppercase tracking-wider">Uptime SLA</span>
-      <div className="w-full max-w-[120px] h-1.5 bg-white/10 rounded-full overflow-hidden">
+      <span className="text-sm text-primary/60 dark:text-purple-300/60 font-manrope font-semibold uppercase tracking-wider">Uptime SLA</span>
+      <div className="w-full max-w-[120px] h-1.5 bg-muted dark:bg-white/10 rounded-full overflow-hidden">
         <motion.div
           className="h-full bg-gradient-to-r from-[#7c3aed] to-[#4c1d95] rounded-full"
           initial={{ width: 0 }}
@@ -133,12 +133,12 @@ function SecurityBadge() {
         <motion.div
           key={shield.id}
           className={`w-14 h-14 rounded-xl flex items-center justify-center border ${
-            shield.active ? 'bg-[#7c3aed]/20 border-[#7c3aed]/50 shadow-[0_0_15px_rgba(124,58,237,0.3)]' : 'bg-white/5 border-white/10'
+            shield.active ? 'bg-primary/10 dark:bg-[#7c3aed]/20 border-primary/30 dark:border-[#7c3aed]/50 shadow-[0_0_15px_rgba(124,58,237,0.1)] dark:shadow-[0_0_15px_rgba(124,58,237,0.3)]' : 'bg-secondary dark:bg-white/5 border-border dark:border-white/10'
           }`}
           animate={{ scale: shield.active ? 1.1 : 1, rotate: shield.active ? [0, -5, 5, 0] : 0 }}
           transition={{ duration: 0.4 }}
         >
-          <Lock className={`w-6 h-6 ${shield.active ? 'text-purple-300' : 'text-gray-600'}`} />
+          <Lock className={`w-6 h-6 ${shield.active ? 'text-primary dark:text-purple-300' : 'text-muted-foreground dark:text-gray-600'}`} />
         </motion.div>
       ))}
     </div>
@@ -150,7 +150,7 @@ function GlobalNetwork() {
 
   return (
     <div className="flex items-center justify-center h-full relative">
-      <Globe className="w-20 h-20 text-white/80 z-10 drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]" />
+      <Globe className="w-20 h-20 text-primary/80 dark:text-white/80 z-10 drop-shadow-[0_0_15px_rgba(124,58,237,0.2)] dark:drop-shadow-[0_0_15px_rgba(124,58,237,0.5)]" />
       {pulses.map((pulse) => (
         <motion.div
           key={pulse}
@@ -171,13 +171,13 @@ function GlobalNetwork() {
 
 export default function BentoShowcase() {
   return (
-    <section className="w-full bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+    <section className="w-full bg-background dark:bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
       {/* Hero-matching Background Gradients */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_bottom,transparent,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] opacity-20 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 dark:bg-[linear-gradient(to_bottom,transparent,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] opacity-20 pointer-events-none" />
       
       {/* Decorative Glows */}
-      <figure className="bg-[#7c3aed]/10 pointer-events-none absolute -top-1/4 left-1/4 z-0 block aspect-square w-[500px] rounded-full blur-[120px]" />
-      <figure className="bg-[#4c1d95]/10 pointer-events-none absolute -bottom-1/4 right-1/4 z-0 block aspect-square w-[500px] rounded-full blur-[120px]" />
+      <figure className="bg-primary/5 dark:bg-[#7c3aed]/10 pointer-events-none absolute -top-1/4 left-1/4 z-0 block aspect-square w-[500px] rounded-full blur-[120px]" />
+      <figure className="bg-primary/5 dark:bg-[#4c1d95]/10 pointer-events-none absolute -bottom-1/4 right-1/4 z-0 block aspect-square w-[500px] rounded-full blur-[120px]" />
 
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
         
@@ -190,10 +190,10 @@ export default function BentoShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="font-instrument text-white text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight mb-6"
+            className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight mb-6"
           >
             One Intelligent System. <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7c3aed] via-[#9333ea] to-indigo-400">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333ea] to-indigo-400">
               Limitless Possibilities.
             </span>
           </motion.h2>
@@ -203,7 +203,7 @@ export default function BentoShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="font-inter text-[18px] text-purple-100/60 leading-relaxed max-w-2xl"
+            className="font-inter text-[18px] text-muted-foreground dark:text-purple-100/60 leading-relaxed max-w-2xl"
           >
             Experience a workspace that adapts to your needs. From advanced analytics to global infrastructure, Weblinear brings everything together in one premium interface.
           </motion.p>
@@ -214,131 +214,131 @@ export default function BentoShowcase() {
           
           {/* 1. Design & Typography - Tall (2x2) */}
           <motion.div
-            className="md:col-span-2 md:row-span-2 bg-[#1a103c]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-2xl"
+            className="md:col-span-2 md:row-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            whileHover={{ y: -5, backgroundColor: "rgba(26, 16, 60, 0.6)" }}
+            whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
-            <div className="flex-1">
+            <div className="flex-1 text-foreground dark:text-white">
               <TypeTester />
             </div>
             <div className="mt-4">
-              <div className="flex items-center gap-2 mb-2 text-purple-300">
+              <div className="flex items-center gap-2 mb-2 text-primary dark:text-purple-300">
                 <Type className="w-5 h-5" />
-                <h3 className="font-instrument text-2xl text-white font-medium">Brand Identity</h3>
+                <h3 className="font-instrument text-2xl text-foreground dark:text-white font-medium">Brand Identity</h3>
               </div>
-              <p className="text-purple-100/50 text-sm mt-1 leading-relaxed">Ensure visual consistency across every customer touchpoint with integrated design systems.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1 leading-relaxed">Ensure visual consistency across every customer touchpoint with integrated design systems.</p>
             </div>
           </motion.div>
 
           {/* 2. Global Network - Tall (2x2) */}
           <motion.div
-            className="md:col-span-2 md:row-span-2 bg-[#1a103c]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-6 flex flex-col hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-2xl"
+            className="md:col-span-2 md:row-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-6 flex flex-col hover:border-primary/50 dark:hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            whileHover={{ y: -5, boxShadow: "0 25px 50px -12px rgba(124, 58, 237, 0.3)" }}
+            whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1 flex items-center justify-center">
               <GlobalNetwork />
             </div>
-            <div className="mt-auto relative z-20 bg-[#2d1b69]/40 backdrop-blur-md rounded-2xl p-4 border border-[#7c3aed]/20">
-              <div className="flex items-center gap-2 mb-2 text-purple-300">
+            <div className="mt-auto relative z-20 bg-background/50 dark:bg-[#2d1b69]/40 backdrop-blur-md rounded-2xl p-4 border border-border dark:border-[#7c3aed]/20">
+              <div className="flex items-center gap-2 mb-2 text-primary dark:text-purple-300">
                 <Globe className="w-5 h-5" />
-                <h3 className="font-instrument text-2xl text-white font-medium">Unified Platform</h3>
+                <h3 className="font-instrument text-2xl text-foreground dark:text-white font-medium">Unified Platform</h3>
               </div>
-              <p className="text-purple-100/50 text-sm mt-1 leading-relaxed">Connect your global team with lightning-fast collaboration tools and edge-optimized data.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1 leading-relaxed">Connect your global team with lightning-fast collaboration tools and edge-optimized data.</p>
             </div>
           </motion.div>
 
           {/* 3. Layouts & Workflows - Standard (2x1) */}
           <motion.div
-            className="md:col-span-2 bg-[#1a103c]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 transition-all cursor-pointer overflow-hidden group shadow-2xl"
+            className="md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            whileHover={{ scale: 0.98 }}
+            whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
               <LayoutAnimation />
             </div>
             <div className="mt-4">
-              <div className="flex items-center gap-2 mb-1 text-indigo-300">
+              <div className="flex items-center gap-2 mb-1 text-indigo-500 dark:text-indigo-300">
                 <Layout className="w-5 h-5" />
-                <h3 className="font-instrument text-xl text-white font-medium">Smart Workflows</h3>
+                <h3 className="font-instrument text-xl text-foreground dark:text-white font-medium">Smart Workflows</h3>
               </div>
-              <p className="text-purple-100/50 text-sm mt-1">Adaptive grids that organize your tasks intelligently.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1">Adaptive grids that organize your tasks intelligently.</p>
             </div>
           </motion.div>
 
           {/* 4. Performance - Standard (2x1) */}
           <motion.div
-            className="md:col-span-2 bg-[#1a103c]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col hover:border-purple-400/50 transition-all cursor-pointer overflow-hidden group shadow-2xl"
+            className="md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-400/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.3 }}
-            whileHover={{ scale: 0.98 }}
+            whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
               <SpeedIndicator />
             </div>
             <div className="mt-4">
-              <div className="flex items-center gap-2 mb-1 text-purple-300">
+              <div className="flex items-center gap-2 mb-1 text-primary dark:text-purple-300">
                 <Zap className="w-5 h-5" />
-                <h3 className="font-instrument text-xl text-white font-medium">Live Analytics</h3>
+                <h3 className="font-instrument text-xl text-foreground dark:text-white font-medium">Live Analytics</h3>
               </div>
-              <p className="text-purple-100/50 text-sm mt-1">Real-time performance tracking with sub-second latency.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1">Real-time performance tracking with sub-second latency.</p>
             </div>
           </motion.div>
 
           {/* 5. Security - Wide (3x1) */}
           <motion.div
-            className="md:col-span-3 bg-[#1a103c]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col hover:border-purple-500/50 transition-all cursor-pointer overflow-hidden group shadow-2xl"
+            className="md:col-span-3 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 dark:hover:border-purple-500/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            whileHover={{ scale: 0.98 }}
+            whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
               <SecurityBadge />
             </div>
             <div className="mt-4">
-              <div className="flex items-center gap-2 mb-1 text-indigo-300">
+              <div className="flex items-center gap-2 mb-1 text-indigo-500 dark:text-indigo-300">
                 <ShieldCheck className="w-5 h-5" />
-                <h3 className="font-instrument text-xl text-white font-medium">Enterprise Security</h3>
+                <h3 className="font-instrument text-xl text-foreground dark:text-white font-medium">Enterprise Security</h3>
               </div>
-              <p className="text-purple-100/50 text-sm mt-1">Multi-layered encryption and proactive threat detection built-in.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1">Multi-layered encryption and proactive threat detection built-in.</p>
             </div>
           </motion.div>
 
           {/* 6. Mobile Ready - Wide (3x1) */}
           <motion.div
-            className="md:col-span-3 bg-[#1a103c]/40 backdrop-blur-xl border border-white/10 rounded-3xl p-8 flex flex-col hover:border-purple-600/50 transition-all cursor-pointer overflow-hidden group shadow-2xl"
+            className="md:col-span-3 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-600/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.5 }}
-            whileHover={{ scale: 0.98 }}
+            whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1 flex items-center justify-center">
               <motion.div
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
               >
-                <Smartphone className="w-16 h-16 text-purple-200 drop-shadow-[0_0_15px_rgba(124,58,237,0.4)]" />
+                <Smartphone className="w-16 h-16 text-primary dark:text-purple-200 drop-shadow-[0_0_15px_rgba(124,58,237,0.4)]" />
               </motion.div>
             </div>
             <div className="mt-4">
-              <div className="flex items-center gap-2 mb-1 text-purple-300">
+              <div className="flex items-center gap-2 mb-1 text-primary dark:text-purple-300">
                 <Smartphone className="w-5 h-5" />
-                <h3 className="font-instrument text-xl text-white font-medium">Native Mobility</h3>
+                <h3 className="font-instrument text-xl text-foreground dark:text-white font-medium">Native Mobility</h3>
               </div>
-              <p className="text-purple-100/50 text-sm mt-1">Access your entire workspace from any device, anywhere in the world.</p>
+              <p className="text-muted-foreground dark:text-purple-100/50 text-sm mt-1">Access your entire workspace from any device, anywhere in the world.</p>
             </div>
           </motion.div>
 

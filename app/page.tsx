@@ -99,7 +99,7 @@ export default function Home() {
               viewBox="0 0 24 24"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
-              className="text-foreground dark:text-white"
+              className="text-foreground"
             >
               <path d="M12 2L2 7L12 12L22 7L12 2Z" fill="currentColor" />
               <path
@@ -146,10 +146,10 @@ export default function Home() {
           {/* Desktop Buttons */}
           <div className="hidden lg:flex items-center space-x-4">
             <ThemeToggle />
-            <button className="bg-white border border-[#d4d4d4] text-[#171717] rounded-full font-manrope font-semibold text-[14px] px-5 py-2 hover:bg-gray-50 transition-colors">
+            <button className="bg-card dark:bg-white border border-border dark:border-[#d4d4d4] text-foreground dark:text-[#171717] rounded-full font-manrope font-semibold text-[14px] px-5 py-2 hover:bg-secondary dark:hover:bg-gray-50 transition-colors">
               Sign In
             </button>
-            <button className="bg-[#7b39fc] text-white rounded-full shadow-sm font-manrope font-semibold text-[14px] px-5 py-2 hover:brightness-110 transition-all hover:scale-105">
+            <button className="bg-primary text-primary-foreground rounded-full shadow-sm font-manrope font-semibold text-[14px] px-5 py-2 hover:brightness-110 transition-all hover:scale-105">
               Get Started
             </button>
           </div>
@@ -194,10 +194,10 @@ export default function Home() {
                 Contact us
               </a>
               <div className="flex flex-col space-y-4 pt-8 w-full px-12">
-                <button className="w-full bg-primary text-primary-foreground rounded-[8px] font-manrope font-semibold text-[16px] py-3">
+                <button className="w-full bg-secondary text-secondary-foreground border border-border rounded-[8px] font-manrope font-semibold text-[16px] py-3">
                   Sign In
                 </button>
-                <button className="w-full bg-[#7b39fc] text-white rounded-[8px] font-manrope font-semibold text-[16px] py-3">
+                <button className="w-full bg-primary text-primary-foreground rounded-[8px] font-manrope font-semibold text-[16px] py-3">
                   Get Started
                 </button>
               </div>
@@ -214,34 +214,34 @@ export default function Home() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5 }}
-            className="flex items-center bg-white/5 border border-white/10 backdrop-blur-xl rounded-full h-[32px] pl-1 pr-4 mb-8 shadow-2xl"
+            className="flex items-center bg-card dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-xl rounded-full h-[32px] pl-1 pr-4 mb-8 shadow-sm dark:shadow-2xl"
           >
-            <span className="bg-[#7c3aed] text-white rounded-full px-2.5 py-0.5 font-inter font-bold text-[10px] uppercase tracking-wider mr-3 ml-0.5">
+            <span className="bg-primary text-primary-foreground rounded-full px-2.5 py-0.5 font-inter font-bold text-[10px] uppercase tracking-wider mr-3 ml-0.5">
               New
             </span>
-            <span className="text-white/80 font-inter font-medium text-[13px] tracking-tight">
+            <span className="text-foreground dark:text-white/80 font-inter font-medium text-[13px] tracking-tight">
               Weblinear Workspace v3.2 is here
             </span>
           </motion.div>
 
           {/* Headline */}
-          <h1 className="font-instrument text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
+          <h1 className="font-instrument text-foreground dark:text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
             Run Your Business <br className="hidden md:block" />
-            <span className="text-white/40">from One Workspace</span>
+            <span className="text-muted-foreground dark:text-white/40">from One Workspace</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="font-inter text-[18px] md:text-[20px] text-white/50 max-w-[600px] mt-8 leading-relaxed">
+          <p className="font-inter text-[18px] md:text-[20px] text-muted-foreground dark:text-white/50 max-w-[600px] mt-8 leading-relaxed">
             A deeply integrated platform designed for teams who value speed and
             simplicity. Manage everything in one place.
           </p>
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12">
-            <button className="bg-[#7c3aed] text-white rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:brightness-110 transition-all hover:scale-[1.02] shadow-[0_0_40px_rgba(124,58,237,0.25)] border border-white/10">
+            <button className="bg-primary text-primary-foreground rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:brightness-110 transition-all hover:scale-[1.02] shadow-[0_4px_14px_0_rgba(123,57,252,0.39)] dark:shadow-[0_0_40px_rgba(124,58,237,0.25)] border border-border dark:border-white/10">
               Start Free Trial
             </button>
-            <button className="bg-white/5 text-white rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:bg-white/10 transition-all hover:scale-[1.02] border border-white/10 backdrop-blur-sm">
+            <button className="bg-card dark:bg-white/5 text-foreground dark:text-white rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:bg-secondary dark:hover:bg-white/10 transition-all hover:scale-[1.02] border border-border dark:border-white/10 backdrop-blur-sm">
               Book a Demo
             </button>
           </div>
@@ -267,17 +267,17 @@ export default function Home() {
       {/* Selected Projects Showcase */}
       <ProjectShowcase />
       {/* Testimonials Section */}
-      <section className="w-full bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-background dark:bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
         {/* Background decorative elements to match hero */}
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#7c3aed]/10 blur-[120px] rounded-full pointer-events-none"></div>
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4c1d95]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 dark:bg-[#7c3aed]/10 blur-[120px] rounded-full pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 dark:bg-[#4c1d95]/10 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 lg:mb-24">
-            <h2 className="font-instrument text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
+            <h2 className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
               Trusted by Visionary Teams
             </h2>
-            <p className="font-inter text-[18px] text-white/70 leading-relaxed">
+            <p className="font-inter text-[18px] text-muted-foreground dark:text-white/70 leading-relaxed">
               See how companies are accelerating their growth and simplifying
               their operations with Weblinear Workspace.
             </p>
@@ -300,8 +300,8 @@ export default function Home() {
               ))}
             </Marquee>
             {/* Edge Fades */}
-            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-[#0a0812]"></div>
-            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-[#0a0812]"></div>
+            <div className="pointer-events-none absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background dark:from-[#0a0812]"></div>
+            <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background dark:from-[#0a0812]"></div>
           </div>
         </div>
       </section>{" "}

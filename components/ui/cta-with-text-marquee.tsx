@@ -99,7 +99,7 @@ export default function CTAWithVerticalMarquee() {
 
         (item as HTMLElement).style.opacity = opacity.toString();
         (item as HTMLElement).style.transform = `scale(${scale})`;
-        (item as HTMLElement).style.color = isCentered ? "#a484d7" : "rgba(255, 255, 255, 0.4)";
+        (item as HTMLElement).style.color = isCentered ? "var(--primary)" : "var(--muted-foreground)";
         (item as HTMLElement).style.fontWeight = isCentered ? "500" : "300";
       });
     };
@@ -115,34 +115,34 @@ export default function CTAWithVerticalMarquee() {
   }, []);
 
   return (
-    <section className="relative w-full py-16 lg:py-20 overflow-hidden border-t border-white/5 bg-[#0a0812] flex items-center justify-center">
+    <section className="relative w-full py-16 lg:py-20 overflow-hidden border-t border-border dark:border-white/5 bg-background dark:bg-[#0a0812] flex items-center justify-center">
       {/* Background decorative elements */}
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#7c3aed]/10 via-[#0a0812] to-[#0a0812] pointer-events-none z-0"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background dark:from-[#7c3aed]/10 dark:via-[#0a0812] dark:to-[#0a0812] pointer-events-none z-0"></div>
       
       <div className="max-w-7xl w-full mx-auto px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
           {/* Left Content */}
           <div className="space-y-6 max-w-xl">
-            <div className="inline-flex items-center bg-white/5 border border-white/10 backdrop-blur-xl rounded-full h-[32px] px-5 mb-2 shadow-2xl">
-              <span className="text-white/80 font-inter font-medium text-[13px] tracking-tight">
+            <div className="inline-flex items-center bg-card dark:bg-white/5 border border-border dark:border-white/10 backdrop-blur-xl rounded-full h-[32px] px-5 mb-2 shadow-sm dark:shadow-2xl">
+              <span className="text-foreground dark:text-white/80 font-inter font-medium text-[13px] tracking-tight">
                 Weblinear Workspace
               </span>
             </div>
             
-            <h2 className="text-5xl md:text-6xl lg:text-[70px] font-instrument font-medium leading-[1.05] tracking-tighter text-white">
+            <h2 className="text-5xl md:text-6xl lg:text-[70px] font-instrument font-medium leading-[1.05] tracking-tighter text-foreground dark:text-white">
               Get Started <br />
-              <span className="text-white/40">in Minutes</span>
+              <span className="text-muted-foreground dark:text-white/40">in Minutes</span>
             </h2>
             
-            <p className="text-lg md:text-xl text-white/50 font-inter leading-relaxed max-w-md">
+            <p className="text-lg md:text-xl text-muted-foreground dark:text-white/50 font-inter leading-relaxed max-w-md">
               Start getting more distribution and ROI out of your content and business operations.
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
-              <button className="px-10 py-4 bg-[#7c3aed] text-white rounded-full font-manrope font-semibold text-[15px] hover:scale-[1.02] transition-all shadow-[0_0_40px_rgba(124,58,237,0.25)]">
+              <button className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-manrope font-semibold text-[15px] hover:scale-[1.02] transition-all shadow-[0_4px_14px_0_rgba(123,57,252,0.39)] dark:shadow-[0_0_40px_rgba(124,58,237,0.25)]">
                 START FREE TRIAL
               </button>
-              <button className="px-10 py-4 bg-white/5 text-white rounded-full font-manrope font-semibold text-[15px] hover:bg-white/10 transition-all border border-white/10 backdrop-blur-sm">
+              <button className="px-10 py-4 bg-card dark:bg-white/5 text-foreground dark:text-white rounded-full font-manrope font-semibold text-[15px] hover:bg-secondary dark:hover:bg-white/10 transition-all border border-border dark:border-white/10 backdrop-blur-sm">
                 BOOK A DEMO
               </button>
             </div>
@@ -163,10 +163,10 @@ export default function CTAWithVerticalMarquee() {
               </VerticalMarquee>
               
               {/* Top vignette */}
-              <div className="pointer-events-none absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-[#0a0812] via-[#0a0812]/80 to-transparent z-10"></div>
+              <div className="pointer-events-none absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-background via-background/80 dark:from-[#0a0812] dark:via-[#0a0812]/80 to-transparent z-10"></div>
               
               {/* Bottom vignette */}
-              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-[#0a0812] via-[#0a0812]/80 to-transparent z-10"></div>
+              <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background via-background/80 dark:from-[#0a0812] dark:via-[#0a0812]/80 to-transparent z-10"></div>
             </div>
           </div>
         </div>

@@ -5,12 +5,12 @@ import clsx from 'clsx';
 
 const FUIHeroWithBorders = ({ children }: { children?: React.ReactNode }) => {
     return (
-        <section className="relative min-h-screen flex flex-col w-full overflow-hidden bg-white dark:bg-[#0a0812]">
+        <section className="relative min-h-screen flex flex-col w-full overflow-hidden bg-background dark:bg-[#0a0812]">
             {/* Main Background Gradient */}
-            <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#fff,#f3e8ff_40%,#e9d5ff_80%)] dark:bg-[linear-gradient(to_bottom,#0a0812,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] z-0" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#eaddff] via-background to-background dark:bg-[linear-gradient(to_bottom,#0a0812,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] z-0" />
             
             {/* Bottom Curve/Glow */}
-            <div className="absolute left-1/2 top-[calc(100%-100px)] lg:top-[calc(100%-165px)] h-[550px] w-[800px] md:h-[550px] md:w-[1200px] lg:h-[820px] lg:w-[115%] -translate-x-1/2 rounded-[100%] border border-purple-500/20 bg-[#0a0812] bg-[radial-gradient(closest-side,#130d2b_85%,#7c3aed)] pointer-events-none z-0 opacity-90 shadow-[0_-10px_40px_rgba(124,58,237,0.1)]"></div>
+            <div className="absolute left-1/2 top-[calc(100%-100px)] lg:top-[calc(100%-165px)] h-[550px] w-[800px] md:h-[550px] md:w-[1200px] lg:h-[820px] lg:w-[115%] -translate-x-1/2 rounded-[100%] border border-border dark:border-purple-500/20 bg-card dark:bg-[#0a0812] dark:bg-[radial-gradient(closest-side,#130d2b_85%,#7c3aed)] pointer-events-none z-0 opacity-90 shadow-[0_-10px_40px_rgba(0,0,0,0.05)] dark:shadow-[0_-10px_40px_rgba(124,58,237,0.1)]"></div>
             
             {/* Grid Borders */}
             <div className="absolute left-0 top-0 z-0 grid h-full w-full grid-cols-[clamp(28px,10vw,120px)_auto_clamp(28px,10vw,120px)] border-b border-black/5 dark:border-white/5 pointer-events-none">
@@ -20,9 +20,9 @@ const FUIHeroWithBorders = ({ children }: { children?: React.ReactNode }) => {
             </div>
             
             {/* Decorative Figures */}
-            <figure className="bg-purple-500/20 pointer-events-none absolute -bottom-[70%] left-1/2 z-0 block aspect-square w-[520px] -translate-x-1/2 rounded-full blur-[200px]" />
-            <figure className="bg-purple-400/10 pointer-events-none absolute left-[4vw] top-[64px] z-0 hidden aspect-square w-[32vw] rounded-full opacity-50 blur-[100px] md:block" />
-            <figure className="bg-purple-600/10 pointer-events-none absolute bottom-[-50px] right-[7vw] z-0 hidden aspect-square w-[30vw] rounded-full opacity-50 blur-[100px] md:block" />
+            <figure className="bg-purple-500/30 dark:bg-purple-500/20 pointer-events-none absolute -bottom-[70%] left-1/2 z-0 block aspect-square w-[520px] -translate-x-1/2 rounded-full blur-[150px] dark:blur-[200px]" />
+            <figure className="bg-purple-400/30 dark:bg-purple-400/10 pointer-events-none absolute left-[4vw] top-[64px] z-0 hidden aspect-square w-[32vw] rounded-full opacity-70 dark:opacity-50 blur-[100px] md:block" />
+            <figure className="bg-purple-600/30 dark:bg-purple-600/10 pointer-events-none absolute bottom-[-50px] right-[7vw] z-0 hidden aspect-square w-[30vw] rounded-full opacity-70 dark:opacity-50 blur-[100px] md:block" />
             
             <div className="relative z-10 flex flex-col items-center w-full">
                 {children}
@@ -95,7 +95,7 @@ const logos = [
                     <img
                       key={key}
                       src={logo.url}
-                      className="h-6 w-auto px-4 flex-none grayscale opacity-50 hover:opacity-100 transition-all duration-300 dark:brightness-0 dark:invert"
+                      className="h-6 w-auto px-4 flex-none grayscale opacity-60 hover:opacity-100 transition-all duration-300 invert dark:invert-0"
                       alt={logo.name}
                     />
                   ))}

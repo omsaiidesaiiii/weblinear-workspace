@@ -103,15 +103,15 @@ export function ProjectShowcase() {
       {/* Background Section Header - More compact */}
       <div className="flex flex-col mb-10">
         <span className="text-purple-500 font-manrope text-[12px] font-semibold tracking-widest uppercase mb-3">Core Modules</span>
-        <h2 className="font-instrument text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
+        <h2 className="font-instrument text-foreground dark:text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
           One workspace <br/>
-          <span className="text-white/40">for everything.</span>
+          <span className="text-muted-foreground dark:text-white/40">for everything.</span>
         </h2>
       </div>
 
       {/* Floating Image Preview - Reduced scale */}
       <div
-        className="pointer-events-none absolute z-50 overflow-hidden rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-white/10 hidden md:block"
+        className="pointer-events-none absolute z-50 overflow-hidden rounded-xl shadow-[0_20px_40px_-10px_rgba(0,0,0,0.1)] dark:shadow-[0_20px_40px_-10px_rgba(0,0,0,0.5)] border border-border dark:border-white/10 hidden md:block"
         style={{
           left: 0,
           top: 0,
@@ -121,7 +121,7 @@ export function ProjectShowcase() {
           transition: "opacity 0.4s cubic-bezier(0.2, 0, 0.2, 1), scale 0.4s cubic-bezier(0.2, 0, 0.2, 1)",
         }}
       >
-        <div className="relative w-[320px] h-[200px] bg-[#1a103c] overflow-hidden">
+        <div className="relative w-[320px] h-[200px] bg-card dark:bg-[#1a103c] overflow-hidden">
           {modules.map((module, index) => (
             <img
               key={module.title}
@@ -148,11 +148,11 @@ export function ProjectShowcase() {
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >
-            <div className="relative py-8 border-t border-white/5 transition-all duration-500 ease-out">
+            <div className="relative py-8 border-t border-border dark:border-white/5 transition-all duration-500 ease-out">
               {/* Background highlight on hover */}
               <div
                 className={`
-                  absolute inset-0 -mx-4 px-4 bg-white/[0.02] 
+                  absolute inset-0 -mx-4 px-4 bg-primary/5 dark:bg-white/[0.02] 
                   transition-all duration-500 ease-out
                   ${hoveredIndex === index ? "opacity-100" : "opacity-0"}
                 `}
@@ -161,7 +161,7 @@ export function ProjectShowcase() {
               <div className="relative flex items-center justify-between gap-6">
                 <div className="flex-1 min-w-0">
                   <div className="inline-flex items-center gap-3">
-                    <h3 className={`font-instrument text-xl md:text-3xl text-white transition-all duration-500 ${hoveredIndex === index ? "translate-x-3" : ""}`}>
+                    <h3 className={`font-instrument text-xl md:text-3xl text-foreground dark:text-white transition-all duration-500 ${hoveredIndex === index ? "translate-x-3" : ""}`}>
                       {module.title}
                     </h3>
 
@@ -181,7 +181,7 @@ export function ProjectShowcase() {
                   <p
                     className={`
                       font-inter text-sm md:text-base mt-2 max-w-lg transition-all duration-500
-                      ${hoveredIndex === index ? "text-white/80 translate-x-3" : "text-white/30"}
+                      ${hoveredIndex === index ? "text-foreground dark:text-white/80 translate-x-3" : "text-muted-foreground dark:text-white/30"}
                     `}
                   >
                     {module.description}
@@ -192,7 +192,7 @@ export function ProjectShowcase() {
                   <span
                     className={`
                       font-inter text-[10px] md:text-xs font-semibold tracking-widest uppercase transition-all duration-500
-                      ${hoveredIndex === index ? "text-purple-400 translate-x-[-6px]" : "text-white/20"}
+                      ${hoveredIndex === index ? "text-primary dark:text-purple-400 translate-x-[-6px]" : "text-muted-foreground dark:text-white/20"}
                     `}
                   >
                     {module.tag}
@@ -204,7 +204,7 @@ export function ProjectShowcase() {
           </a>
         ))}
 
-        <div className="border-t border-white/5" />
+        <div className="border-t border-border dark:border-white/5" />
       </div>
     </section>
   )
