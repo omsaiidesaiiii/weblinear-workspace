@@ -4,6 +4,8 @@ import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 
 import { ThemeToggle } from "@/components/theme-toggle";
+import FUIHeroWithBorders, { AnimatedLogoCloud } from "@/components/ui/herowith-logos";
+
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,20 +24,7 @@ export default function Home() {
     <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
       
       {/* Hero Section */}
-      <section className="relative w-full min-h-screen flex flex-col items-center overflow-hidden">
-        {/* Video Background - No Overlay */}
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 min-h-screen w-full h-full object-cover z-0"
-        >
-          <source
-            src="https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260210_031346_d87182fb-b0af-4273-84d1-c6fd17d6bf0f.mp4"
-            type="video/mp4"
-          />
-        </video>
+      <FUIHeroWithBorders>
 
         {/* Navbar Overlay */}
         <header
@@ -190,19 +179,25 @@ export default function Home() {
               Book a Demo
             </button>
           </div>
-
-          {/* Trust Line */}
-          <p className="font-inter text-sm text-white/60 mt-12 mb-20">
-            Trusted by growing businesses to automate operations and boost efficiency.
-          </p>
         </div>
+      
 
         {/* Decorative gradient overlay at bottom for smoother scroll transition */}
-        <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-10" />
+        {/* <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-10" /> */}
+      </FUIHeroWithBorders>
+
+      {/* Trust & Logos Section */}
+      <section className="w-full py-10 bg-background border-b border-border">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <p className="font-inter text-sm text-muted-foreground mb-6 tracking-wide uppercase">
+            Trusted by growing businesses to automate operations and boost efficiency
+          </p>
+          <AnimatedLogoCloud />
+        </div>
       </section>
 
       {/* Dashboard Preview Section */}
-      <section className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 pb-24 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
+      {/* <section className="relative z-20 w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 pb-24 animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
         <div className="relative rounded-2xl md:rounded-3xl overflow-hidden shadow-2xl border border-white/10 ring-1 ring-white/10 bg-[#1a1528]">
           <div className="absolute inset-0 bg-gradient-to-tr from-[#7b39fc]/10 to-transparent opacity-50 mix-blend-overlay"></div>
           <img 
@@ -211,7 +206,7 @@ export default function Home() {
             className="w-full h-auto max-h-[650px] object-contain shadow-[0_0_50px_rgba(123,57,252,0.2)]"
           />
         </div>
-      </section>
+      </section> */}
 
       {/* Value Proposition Section */}
       <section className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 border-t border-border relative z-10">
