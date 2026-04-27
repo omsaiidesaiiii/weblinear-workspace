@@ -75,7 +75,7 @@ const logos = [
 
   export const AnimatedLogoCloud = () => {
     return (
-      <div className="w-full py-8 relative z-20">
+      <div className="w-full py-4 relative z-20">
         <style dangerouslySetInnerHTML={{ __html: `
           @keyframes x-slider {
             from { transform: translateX(0); }
