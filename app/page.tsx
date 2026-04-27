@@ -1,8 +1,13 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+import { BlurText } from "@/components/ui/blur-text";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import FUIHeroWithBorders, {
@@ -21,6 +26,25 @@ import CTAWithVerticalMarquee from "@/components/ui/cta-with-text-marquee";
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const mainRef = useRef<HTMLDivElement>(null);
+
+  gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+  useGSAP(() => {
+    // Fade in testimonials section
+    gsap.fromTo(".testimonials-section", 
+      { opacity: 0 },
+      {
+        scrollTrigger: {
+          trigger: ".testimonials-section",
+          start: "top 75%",
+        },
+        opacity: 1,
+        duration: 1,
+        ease: "power2.out"
+      }
+    );
+  }, { scope: mainRef });
 
   const testimonials = [
     {
@@ -77,7 +101,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
+    <main ref={mainRef} className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
       {/* Navbar Overlay */}
       <header
         className={`fixed top-6 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-2rem)] max-w-7xl transition-all duration-300 ${
@@ -225,16 +249,20 @@ export default function Home() {
           </motion.div>
 
           {/* Headline */}
-          <h1 className="font-instrument text-foreground dark:text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
-            Run Your Business <br className="hidden md:block" />
-            <span className="text-muted-foreground dark:text-white/40">from One Workspace</span>
-          </h1>
+          <div className="font-instrument text-foreground dark:text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
+            <BlurText text="Run Your Business" delay={100} stepDuration={0.3} animateBy="words" as="div" />
+            <BlurText text="from One Workspace" delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block mt-2" as="div" />
+          </div>
 
           {/* Subheadline */}
-          <p className="font-inter text-[18px] md:text-[20px] text-muted-foreground dark:text-white/50 max-w-[600px] mt-8 leading-relaxed">
-            A deeply integrated platform designed for teams who value speed and
-            simplicity. Manage everything in one place.
-          </p>
+          <BlurText
+            text="A deeply integrated platform designed for teams who value speed and simplicity. Manage everything in one place."
+            className="font-inter text-[18px] md:text-[20px] text-muted-foreground dark:text-white/50 max-w-[600px] mt-8 leading-relaxed mx-auto text-center"
+            as="p"
+            delay={600}
+            stepDuration={0.05}
+            animateBy="words"
+          />
 
           {/* CTA Buttons */}
           <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12">
@@ -267,16 +295,19 @@ export default function Home() {
       {/* Selected Projects Showcase */}
       <ProjectShowcase />
       {/* Testimonials Section */}
-      <section className="w-full bg-background dark:bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
+      <section className="testimonials-section w-full bg-background dark:bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
         {/* Background decorative elements to match hero */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 dark:bg-[#7c3aed]/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 dark:bg-[#4c1d95]/10 blur-[120px] rounded-full pointer-events-none"></div>
 
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 lg:mb-24">
-            <h2 className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
-              Trusted by Visionary Teams
-            </h2>
+            <BlurText
+              text="Trusted by Visionary Teams"
+              className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6"
+              as="h2"
+              delay={150}
+            />
             <p className="font-inter text-[18px] text-muted-foreground dark:text-white/70 leading-relaxed">
               See how companies are accelerating their growth and simplifying
               their operations with Weblinear Workspace.

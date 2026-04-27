@@ -4,6 +4,12 @@ import type React from "react"
 import { useState, useRef, useEffect } from "react"
 import { ArrowUpRight } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import gsap from "gsap"
+import { useGSAP } from "@gsap/react"
+import { ScrollTrigger } from "gsap/ScrollTrigger"
+import { BlurText } from "@/components/ui/blur-text"
+
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
 interface Module {
   title: string
@@ -51,6 +57,26 @@ export function ProjectShowcase() {
   const [isVisible, setIsVisible] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const animationRef = useRef<number | null>(null)
+  
+  useGSAP(() => {
+    const items = gsap.utils.toArray<HTMLElement>('.showcase-list-item');
+    items.forEach((item, i) => {
+      gsap.fromTo(item, 
+        { opacity: 0, y: 40 },
+        {
+          scrollTrigger: {
+            trigger: item,
+            start: "top 90%",
+          },
+          opacity: 1,
+          y: 0,
+          duration: 1,
+          ease: "power3.out",
+          delay: i * 0.1 // stagger items slightly as they scroll in
+        }
+      )
+    });
+  }, { scope: containerRef })
 
   useEffect(() => {
     const lerp = (start: number, end: number, factor: number) => {
@@ -103,10 +129,10 @@ export function ProjectShowcase() {
       {/* Background Section Header - More compact */}
       <div className="flex flex-col mb-10">
         <span className="text-purple-500 font-manrope text-[12px] font-semibold tracking-widest uppercase mb-3">Core Modules</span>
-        <h2 className="font-instrument text-foreground dark:text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
-          One workspace <br/>
-          <span className="text-muted-foreground dark:text-white/40">for everything.</span>
-        </h2>
+        <div className="font-instrument text-foreground dark:text-white text-3xl md:text-4xl lg:text-5xl tracking-tighter">
+          <BlurText text="One workspace" delay={100} stepDuration={0.3} animateBy="words" as="div" />
+          <BlurText text="for everything." delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block mt-1" as="div" />
+        </div>
       </div>
 
       {/* Floating Image Preview - Reduced scale */}
@@ -144,7 +170,7 @@ export function ProjectShowcase() {
           <a
             key={module.title}
             href={module.link}
-            className="group block"
+            className="group block showcase-list-item"
             onMouseEnter={() => handleMouseEnter(index)}
             onMouseLeave={handleMouseLeave}
           >

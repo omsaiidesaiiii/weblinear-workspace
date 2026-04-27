@@ -1,8 +1,14 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Lock, Smartphone, Globe, BarChart3, ShieldCheck, Zap, Layout, Type } from "lucide-react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BlurText } from "@/components/ui/blur-text";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 // --- Visual Components from the premium bento ---
 
@@ -170,8 +176,31 @@ function GlobalNetwork() {
 }
 
 export default function BentoShowcase() {
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const cards = gsap.utils.toArray<HTMLElement>('.showcase-card');
+    cards.forEach((card, i) => {
+      gsap.fromTo(card, 
+        { opacity: 0, y: 30, scale: 0.98 },
+        {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+          },
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power2.out",
+          delay: (i % 2) * 0.15 // alternate stagger for 2-column layout
+        }
+      );
+    });
+  }, { scope: container });
+
   return (
-    <section className="w-full bg-background dark:bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
+    <section ref={container} className="w-full bg-background dark:bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
       {/* Hero-matching Background Gradients */}
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-primary/5 dark:bg-[linear-gradient(to_bottom,transparent,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] opacity-20 pointer-events-none" />
       
@@ -185,18 +214,17 @@ export default function BentoShowcase() {
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-20">
          
           
-          <motion.h2 
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
-            className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight mb-6"
-          >
-            One Intelligent System. <br className="hidden md:block"/>
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary via-[#9333ea] to-indigo-400">
-              Limitless Possibilities.
-            </span>
-          </motion.h2>
+          <div className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-7xl leading-[1.1] tracking-tight mb-6">
+            <BlurText text="One Intelligent System." delay={100} stepDuration={0.3} animateBy="words" as="div" />
+            <BlurText 
+              text="Limitless Possibilities." 
+              delay={400} 
+              stepDuration={0.3} 
+              animateBy="words" 
+              className="text-primary dark:text-purple-400 block mt-2" 
+              as="div" 
+            />
+          </div>
           
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
@@ -214,10 +242,7 @@ export default function BentoShowcase() {
           
           {/* 1. Design & Typography - Tall (2x2) */}
           <motion.div
-            className="md:col-span-2 md:row-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            className="showcase-card md:col-span-2 md:row-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1 text-foreground dark:text-white">
@@ -234,11 +259,7 @@ export default function BentoShowcase() {
 
           {/* 2. Global Network - Tall (2x2) */}
           <motion.div
-            className="md:col-span-2 md:row-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-6 flex flex-col hover:border-primary/50 dark:hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2 }}
+            className="showcase-card md:col-span-2 md:row-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-6 flex flex-col hover:border-primary/50 dark:hover:border-[#7c3aed]/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             whileHover={{ y: -5, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1 flex items-center justify-center">
@@ -255,11 +276,7 @@ export default function BentoShowcase() {
 
           {/* 3. Layouts & Workflows - Standard (2x1) */}
           <motion.div
-            className="md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.1 }}
+            className="showcase-card md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
@@ -276,11 +293,7 @@ export default function BentoShowcase() {
 
           {/* 4. Performance - Standard (2x1) */}
           <motion.div
-            className="md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-400/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.3 }}
+            className="showcase-card md:col-span-2 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-400/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
@@ -297,11 +310,7 @@ export default function BentoShowcase() {
 
           {/* 5. Security - Wide (3x1) */}
           <motion.div
-            className="md:col-span-3 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 dark:hover:border-purple-500/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.4 }}
+            className="showcase-card md:col-span-3 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-indigo-500/50 dark:hover:border-purple-500/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1">
@@ -318,11 +327,7 @@ export default function BentoShowcase() {
 
           {/* 6. Mobile Ready - Wide (3x1) */}
           <motion.div
-            className="md:col-span-3 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-600/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.5 }}
+            className="showcase-card md:col-span-3 bg-card dark:bg-[#1a103c]/40 backdrop-blur-xl border border-border dark:border-white/10 rounded-3xl p-8 flex flex-col hover:border-primary/50 dark:hover:border-purple-600/50 transition-all cursor-pointer overflow-hidden group shadow-sm dark:shadow-2xl"
             whileHover={{ scale: 0.98, boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)" }}
           >
             <div className="flex-1 flex items-center justify-center">

@@ -1,14 +1,47 @@
 "use client";
 import { clsx } from "clsx";
 import { motion } from "framer-motion";
+import { useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BlurText } from "@/components/ui/blur-text";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 export default function ValuePropBento() {
+  const container = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const cards = gsap.utils.toArray<HTMLElement>('.bento-card');
+    cards.forEach((card, i) => {
+      gsap.fromTo(card, 
+        { opacity: 0, y: 40, scale: 0.95 },
+        {
+          scrollTrigger: {
+            trigger: card,
+            start: "top 85%",
+          },
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 1,
+          ease: "power3.out",
+          delay: i * 0.15 // pseudo-stagger
+        }
+      );
+    });
+  }, { scope: container });
+
   return (
-    <div className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 relative z-10">
+    <div ref={container} className="w-full max-w-7xl mx-auto px-6 lg:px-8 py-24 relative z-10 bento-container">
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto mb-16">
-        <h2 className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6">
-          Everything Your Business Needs — In One Place
-        </h2>
+        <BlurText
+          text="Everything Your Business Needs — In One Place"
+          className="font-instrument text-foreground dark:text-white text-4xl md:text-5xl lg:text-6xl leading-[1.1] tracking-tight mb-6"
+          as="h2"
+          delay={150}
+        />
         <p className="font-inter text-[18px] text-muted-foreground dark:text-white/70 max-w-2xl leading-relaxed">
           Stop switching between multiple tools. Weblinear Workspace brings
           your entire business ecosystem together — so you can focus on
@@ -70,7 +103,7 @@ export function BentoCard({
       data-dark={dark ? "true" : undefined}
       className={clsx(
         className,
-        "group relative flex flex-col overflow-hidden rounded-[2rem] h-[32rem]",
+        "bento-card group relative flex flex-col overflow-hidden rounded-[2rem] h-[32rem]",
         "bg-card dark:bg-[#110e1a] border border-border dark:border-white/10 shadow-sm dark:shadow-[0_0_20px_rgba(123,57,252,0.05)]",
         "hover:border-border/80 dark:hover:border-white/20 transition-colors duration-500"
       )}

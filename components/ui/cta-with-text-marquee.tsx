@@ -2,6 +2,12 @@
 
 import { cn } from "@/lib/utils";
 import { ReactNode, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BlurText } from "@/components/ui/blur-text";
+
+gsap.registerPlugin(ScrollTrigger, useGSAP);
 
 interface VerticalMarqueeProps {
   children: ReactNode;
@@ -114,8 +120,26 @@ export default function CTAWithVerticalMarquee() {
     return () => cancelAnimationFrame(frame);
   }, []);
 
+  const ctaRef = useRef<HTMLDivElement>(null);
+  
+  useGSAP(() => {
+    gsap.fromTo(ctaRef.current, 
+      { opacity: 0, scale: 0.95 },
+      {
+        scrollTrigger: {
+          trigger: ctaRef.current,
+          start: "top 85%",
+        },
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: "power3.out"
+      }
+    );
+  }, { scope: ctaRef });
+
   return (
-    <section className="relative w-full py-16 lg:py-20 overflow-hidden border-t border-border dark:border-white/5 bg-background dark:bg-[#0a0812] flex items-center justify-center">
+    <section ref={ctaRef} className="relative w-full py-16 lg:py-20 overflow-hidden border-t border-border dark:border-white/5 bg-background dark:bg-[#0a0812] flex items-center justify-center">
       {/* Background decorative elements */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/10 via-background to-background dark:from-[#7c3aed]/10 dark:via-[#0a0812] dark:to-[#0a0812] pointer-events-none z-0"></div>
       
@@ -129,10 +153,10 @@ export default function CTAWithVerticalMarquee() {
               </span>
             </div>
             
-            <h2 className="text-5xl md:text-6xl lg:text-[70px] font-instrument font-medium leading-[1.05] tracking-tighter text-foreground dark:text-white">
-              Get Started <br />
-              <span className="text-muted-foreground dark:text-white/40">in Minutes</span>
-            </h2>
+            <div className="text-5xl md:text-6xl lg:text-[70px] font-instrument font-medium leading-[1.05] tracking-tighter text-foreground dark:text-white">
+              <BlurText text="Get Started" delay={100} stepDuration={0.3} animateBy="words" as="div" />
+              <BlurText text="in Minutes" delay={400} stepDuration={0.3} animateBy="words" className="text-muted-foreground dark:text-white/40 block" as="div" />
+            </div>
             
             <p className="text-lg md:text-xl text-muted-foreground dark:text-white/50 font-inter leading-relaxed max-w-md">
               Start getting more distribution and ROI out of your content and business operations.
