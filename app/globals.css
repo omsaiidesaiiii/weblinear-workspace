@@ -72,7 +72,31 @@
   from {
     transform: translateX(calc(-100% - var(--gap)));}
   to {
-    transform: translateX(0);}}}
+    transform: translateX(0);}}
+
+  --animate-marquee-vertical: marquee-vertical var(--duration, 30s) linear infinite;
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);}
+  to {
+    transform: translateY(-100%);}}
+
+  --animate-fade-in-up: fade-in-up 0.5s ease-out forwards;
+  @keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);}
+  to {
+    opacity: 1;
+    transform: translateY(0);}}
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono)
+;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);}
+  to {
+    transform: translateX(-100%);}}}
 
 :root {
   --background: oklch(1 0 0);
