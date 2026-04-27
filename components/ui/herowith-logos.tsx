@@ -76,15 +76,6 @@ const logos = [
   export const AnimatedLogoCloud = () => {
     return (
       <div className="w-full py-4 relative z-20">
-        <style dangerouslySetInnerHTML={{ __html: `
-          @keyframes x-slider {
-            from { transform: translateX(0); }
-            to { transform: translateX(calc(-100% - 1.5rem)); }
-          }
-          .animate-x-slider {
-            animation: x-slider 30s linear infinite;
-          }
-        `}} />
         <div className="mx-auto w-full px-4 md:px-8">
           <div
             className="group relative flex gap-6 overflow-hidden p-2"

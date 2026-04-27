@@ -48,12 +48,16 @@ export default function RootLayout({
         inter.variable
       )}
     >
-      <body className="min-h-full flex flex-col font-inter bg-background">
+      <body 
+        className="min-h-full flex flex-col font-inter bg-background"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
-          enableSystem
+          enableSystem={false}
           disableTransitionOnChange
+          suppressHydrationWarning
         >
           {children}
         </ThemeProvider>

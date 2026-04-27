@@ -2,10 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
 import { ThemeToggle } from "@/components/theme-toggle";
 import FUIHeroWithBorders, { AnimatedLogoCloud } from "@/components/ui/herowith-logos";
 import BentoShowcase from "@/components/ui/bento-showcase";
+import { ProjectShowcase } from "@/components/ui/project-showcase";
 import ValuePropBento from "@/components/bento";
 
 
@@ -53,6 +55,7 @@ export default function Home() {
                   stroke="currentColor"
                   strokeWidth="2"
                   strokeLinecap="round"
+                  strokeLinejoin="round"
                   strokeLinejoin="round"
                 />
               </svg>
@@ -128,6 +131,7 @@ export default function Home() {
               </div>
             </div>
             <div className="flex flex-col items-center justify-center flex-1 space-y-8">
+              
               <a href="#" className="font-manrope text-2xl font-medium">Home</a>
               <a href="#" className="font-manrope text-2xl font-medium">Services</a>
               <a href="#" className="font-manrope text-2xl font-medium">Reviews</a>
@@ -151,33 +155,38 @@ export default function Home() {
         <div className="relative z-10 flex flex-col items-center text-center mt-32 lg:mt-40 px-4 animate-in fade-in slide-in-from-bottom-8 duration-700">
           
           {/* Tagline Pill */}
-          <div className="flex items-center bg-[#55506e]/40 border border-[#a484d7]/50 backdrop-blur-md rounded-[10px] h-[38px] pl-1 pr-4 mb-6 shadow-lg">
-            <span className="bg-[#7b39fc] text-white rounded-[6px] px-2 py-0.5 font-cabin font-medium text-[12px] mr-3 ml-0.5">
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5 }}
+            className="flex items-center bg-white/5 border border-white/10 backdrop-blur-xl rounded-full h-[32px] pl-1 pr-4 mb-8 shadow-2xl"
+          >
+            <span className="bg-[#7c3aed] text-white rounded-full px-2.5 py-0.5 font-inter font-bold text-[10px] uppercase tracking-wider mr-3 ml-0.5">
               New
             </span>
-            <span className="text-white font-cabin font-medium text-[14px]">
-              Say Hello to Weblinear Workspace v3.2
+            <span className="text-white/80 font-inter font-medium text-[13px] tracking-tight">
+              Weblinear Workspace v3.2 is here
             </span>
-          </div>
+          </motion.div>
 
           {/* Headline */}
-          <h1 className="font-instrument text-white text-5xl md:text-7xl lg:text-[96px] leading-[1.1] tracking-tight max-w-5xl">
-            Run Your Entire Business from One Intelligent Workspace
+          <h1 className="font-instrument text-white text-5xl md:text-7xl lg:text-[100px] leading-[0.95] tracking-tighter max-w-5xl">
+            Run Your Business <br className="hidden md:block"/> 
+            <span className="text-white/40">from One Workspace</span>
           </h1>
 
           {/* Subheadline */}
-          <p className="font-inter text-[18px] text-white/70 max-w-[662px] mt-6 leading-relaxed">
-            Weblinear Workspace helps you manage accounts, CRM, HR, projects, and
-            analytics — all in one powerful platform designed to scale your
-            business faster.
+          <p className="font-inter text-[18px] md:text-[20px] text-white/50 max-w-[600px] mt-8 leading-relaxed">
+            A deeply integrated platform designed for teams who value 
+            speed and simplicity. Manage everything in one place.
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-8">
-            <button className="bg-[#7b39fc] text-white rounded-[10px] font-cabin font-medium text-[16px] px-8 py-3.5 hover:brightness-110 transition-all hover:scale-105 shadow-[0_0_20px_rgba(123,57,252,0.3)]">
+          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12">
+            <button className="bg-[#7c3aed] text-white rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:brightness-110 transition-all hover:scale-[1.02] shadow-[0_0_40px_rgba(124,58,237,0.25)] border border-white/10">
               Start Free Trial
             </button>
-            <button className="bg-[#2b2344] text-[#f6f7f9] rounded-[10px] font-cabin font-medium text-[16px] px-8 py-3.5 hover:brightness-110 transition-all hover:scale-105">
+            <button className="bg-white/5 text-white rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:bg-white/10 transition-all hover:scale-[1.02] border border-white/10 backdrop-blur-sm">
               Book a Demo
             </button>
           </div>
@@ -203,6 +212,9 @@ export default function Home() {
 
       {/* Premium Unified Features Showcase */}
       <BentoShowcase />
+
+      {/* Selected Projects Showcase */}
+      <ProjectShowcase />
       {/* Testimonials Section */}
       <section className="w-full bg-black py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">

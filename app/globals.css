@@ -129,6 +129,16 @@
   --sidebar-ring: oklch(0.552 0.016 285.938);
 }
 
+@layer utilities {
+  @keyframes x-slider {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - 1.5rem)); }
+  }
+  .animate-x-slider {
+    animation: x-slider 30s linear infinite;
+  }
+}
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
