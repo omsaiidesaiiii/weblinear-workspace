@@ -91,7 +91,7 @@ const logos = [
                     <img
                       key={key}
                       src={logo.url}
-                      className="h-6 w-auto px-4 flex-none grayscale opacity-60 hover:opacity-100 transition-all duration-300 invert dark:invert-0"
+                      className="h-6 w-auto px-4 flex-none opacity-60 hover:opacity-100 transition-all duration-300 brightness-0 dark:invert"
                       alt={logo.name}
                     />
                   ))}
