@@ -267,7 +267,7 @@ export default function Home() {
       {/* Selected Projects Showcase */}
       <ProjectShowcase />
       {/* Testimonials Section */}
-      <section className="w-full bg-[#0a0812] py-24 lg:py-32 relative z-10 overflow-hidden border-t border-white/5">
+      <section className="w-full bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-white/5">
         {/* Background decorative elements to match hero */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-[#7c3aed]/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-[#4c1d95]/10 blur-[120px] rounded-full pointer-events-none"></div>

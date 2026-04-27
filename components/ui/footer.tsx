@@ -103,9 +103,9 @@ const footerLinks: FooterSection[] = [
 
 export default function Footer() {
   return (
-    <footer className="relative w-full max-w-7xl mx-auto mt-24">
+    <footer className="relative w-full max-w-7xl mx-auto mt-12 lg:mt-16">
       {/* Background Container with premium styling */}
-      <div className="relative w-full rounded-t-[2.5rem] lg:rounded-t-[4rem] border-t border-white/10 bg-[#0a0812] overflow-hidden px-6 py-16 lg:py-24">
+      <div className="relative w-full rounded-t-[2.5rem] lg:rounded-t-[4rem] border-t border-white/10 bg-[#0a0812] overflow-hidden px-6 py-12 lg:py-16">
         
         {/* Premium Background Gradients matching Hero */}
         <div className="absolute inset-0 bg-[linear-gradient(to_bottom,#0a0812,#1a103c_40%,#2d1b69_74%,#4c1d95_88%_50%)] z-0 pointer-events-none opacity-50" />
