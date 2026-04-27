@@ -211,3 +211,54 @@
     }
   }
 }
+
+.premium-button {
+  display: flex;
+  align-items: center;
+  font-family: inherit;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 17px;
+  padding: 0.8em 1.5em 0.8em 1.2em;
+  letter-spacing: 0.05em;
+  border-radius: 20em;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.premium-button-primary {
+  color: white;
+  background: #ad5389;
+  background: linear-gradient(
+    0deg,
+    rgba(77, 54, 208, 1) 0%,
+    rgba(132, 116, 254, 1) 100%
+  );
+  border: none;
+}
+
+.premium-button-secondary {
+  background: var(--card);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.dark .premium-button-secondary {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.premium-button svg {
+  margin-right: 8px;
+  transition: all 0.3s ease;
+}
+
+.premium-button:hover {
+  transform: translateY(-2px);
+}
+
+.premium-button:active {
+  transform: translateY(0);
+}

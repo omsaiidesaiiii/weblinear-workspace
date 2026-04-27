@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BlurText } from "@/components/ui/blur-text";
+import { PremiumButton } from "@/components/ui/premium-button";
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -163,12 +164,18 @@ export default function CTAWithVerticalMarquee() {
             </p>
             
             <div className="flex flex-wrap gap-4 pt-2">
-              <button className="px-10 py-4 bg-primary text-primary-foreground rounded-full font-manrope font-semibold text-[15px] hover:scale-[1.02] transition-all shadow-[0_4px_14px_0_rgba(123,57,252,0.39)] dark:shadow-[0_0_40px_rgba(124,58,237,0.25)]">
+              <PremiumButton 
+                className="px-10 py-4 text-[15px] uppercase"
+               
+              >
                 START FREE TRIAL
-              </button>
-              <button className="px-10 py-4 bg-card dark:bg-white/5 text-foreground dark:text-white rounded-full font-manrope font-semibold text-[15px] hover:bg-secondary dark:hover:bg-white/10 transition-all border border-border dark:border-white/10 backdrop-blur-sm">
+              </PremiumButton>
+              <PremiumButton 
+                variant="secondary" 
+                className="px-10 py-4 text-[15px] !font-semibold font-manrope hover:!bg-secondary dark:hover:!bg-white/10"
+              >
                 BOOK A DEMO
-              </button>
+              </PremiumButton>
             </div>
           </div>
 

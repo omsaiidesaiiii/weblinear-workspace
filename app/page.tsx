@@ -22,6 +22,7 @@ import { TestimonialCard } from "@/components/ui/testimonial-card";
 
 import Footer from "@/components/ui/footer";
 import CTAWithVerticalMarquee from "@/components/ui/cta-with-text-marquee";
+import { PremiumButton } from "@/components/ui/premium-button";
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -103,10 +104,11 @@ export default function Home() {
   return (
     <main ref={mainRef} className="relative w-full flex flex-col selection:bg-[#7b39fc] selection:text-white bg-background font-inter transition-colors duration-500">
       {/* Navbar Overlay */}
-      <header
-        className={`fixed top-6 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-2rem)] max-w-7xl transition-all duration-300 ${
-          scrolled ? "" : ""
-        }`}
+      <motion.header
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-6 left-1/2 -translate-x-1/2 z-[999] w-[calc(100%-2rem)] max-w-7xl transition-all duration-300`}
       >
         <div
           className={`flex items-center justify-between px-6 py-3 rounded-full transition-all duration-300 ${
@@ -141,42 +143,43 @@ export default function Home() {
 
           {/* Desktop Nav Links */}
           <nav className="hidden lg:flex items-center space-x-8">
-            <a
-              href="#"
-              className="font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
-            >
-              Home
-            </a>
-            <a
-              href="#"
-              className="flex items-center font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
-            >
-              Services <ChevronDown className="ml-1 w-4 h-4" />
-            </a>
-            <a
-              href="#"
-              className="font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
-            >
-              Reviews
-            </a>
-            <a
-              href="#"
-              className="font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
-            >
-              Contact us
-            </a>
+            {[
+              { name: "Home", href: "#" },
+              { name: "Services", href: "#", hasChevron: true },
+              { name: "Reviews", href: "#" },
+              { name: "Contact us", href: "#" },
+            ].map((link, i) => (
+              <motion.a
+                key={link.name}
+                href={link.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 * i + 0.5, duration: 0.5 }}
+                className="flex items-center font-manrope font-medium text-[14px] text-foreground hover:opacity-80 transition-opacity"
+              >
+                {link.name} {link.hasChevron && <ChevronDown className="ml-1 w-4 h-4" />}
+              </motion.a>
+            ))}
           </nav>
 
           {/* Desktop Buttons */}
-          <div className="hidden lg:flex items-center space-x-4">
+          <motion.div 
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 1, duration: 0.5 }}
+            className="hidden lg:flex items-center space-x-4"
+          >
             <ThemeToggle />
-            <button className="bg-card dark:bg-white border border-border dark:border-[#d4d4d4] text-foreground dark:text-[#171717] rounded-full font-manrope font-semibold text-[14px] px-5 py-2 hover:bg-secondary dark:hover:bg-gray-50 transition-colors">
+            <PremiumButton 
+              variant="secondary" 
+              className="!text-[14px] !px-5 !py-2 !font-semibold font-manrope hover:!bg-secondary dark:hover:!bg-white/10"
+            >
               Sign In
-            </button>
-            <button className="bg-primary text-primary-foreground rounded-full shadow-sm font-manrope font-semibold text-[14px] px-5 py-2 hover:brightness-110 transition-all hover:scale-105">
+            </PremiumButton>
+            <PremiumButton className="!text-[14px] !px-5 !py-2 !font-semibold font-manrope">
               Get Started
-            </button>
-          </div>
+            </PremiumButton>
+          </motion.div>
 
           {/* Mobile Menu Toggle */}
           <div className="lg:hidden flex items-center space-x-4">
@@ -218,17 +221,20 @@ export default function Home() {
                 Contact us
               </a>
               <div className="flex flex-col space-y-4 pt-8 w-full px-12">
-                <button className="w-full bg-secondary text-secondary-foreground border border-border rounded-[8px] font-manrope font-semibold text-[16px] py-3">
+                <PremiumButton 
+                  variant="secondary" 
+                  className="w-full !text-[16px] !py-3 rounded-[8px] !font-semibold font-manrope"
+                >
                   Sign In
-                </button>
-                <button className="w-full bg-primary text-primary-foreground rounded-[8px] font-manrope font-semibold text-[16px] py-3">
+                </PremiumButton>
+                <PremiumButton className="w-full !text-[16px] !py-3 rounded-[8px] !font-semibold font-manrope">
                   Get Started
-                </button>
+                </PremiumButton>
               </div>
             </div>
           </div>
         )}
-      </header>
+      </motion.header>
       {/* Hero Section */}
       <FUIHeroWithBorders>
         {/* Hero Content */}
@@ -265,21 +271,37 @@ export default function Home() {
           />
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12">
-            <button className="bg-primary text-primary-foreground rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:brightness-110 transition-all hover:scale-[1.02] shadow-[0_4px_14px_0_rgba(123,57,252,0.39)] dark:shadow-[0_0_40px_rgba(124,58,237,0.25)] border border-border dark:border-white/10">
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+            className="flex flex-col sm:flex-row items-center space-y-4 sm:space-y-0 sm:space-x-4 mt-12"
+          >
+            <PremiumButton 
+              className="px-10 py-4 text-[15px]"
+            >
               Start Free Trial
-            </button>
-            <button className="bg-card dark:bg-white/5 text-foreground dark:text-white rounded-full font-inter font-semibold text-[15px] px-10 py-4 hover:bg-secondary dark:hover:bg-white/10 transition-all hover:scale-[1.02] border border-border dark:border-white/10 backdrop-blur-sm">
+            </PremiumButton>
+            <PremiumButton 
+              variant="secondary" 
+              className="px-10 py-4 text-[15px] !font-semibold font-inter hover:!bg-secondary dark:hover:!bg-white/10"
+            >
               Book a Demo
-            </button>
-          </div>
+            </PremiumButton>
+          </motion.div>
         </div>
 
         {/* Decorative gradient overlay at bottom for smoother scroll transition */}
         {/* <div className="absolute bottom-0 left-0 w-full h-48 bg-gradient-to-t from-black via-black/80 to-transparent pointer-events-none z-10" /> */}
       </FUIHeroWithBorders>
       {/* Trust & Logos Section */}
-      <section className="w-full py-10 bg-background border-b border-border">
+      <motion.section 
+        initial={{ opacity: 0, y: 40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
+        className="w-full py-10 bg-background border-b border-border"
+      >
         <div className="max-w-7xl mx-auto px-6 text-center">
           <p className="font-inter text-sm text-muted-foreground mb-6 tracking-wide uppercase">
             Trusted by growing businesses to automate operations and boost
@@ -287,7 +309,7 @@ export default function Home() {
           </p>
           <AnimatedLogoCloud />
         </div>
-      </section>
+      </motion.section>
       {/* Value Proposition Section (Bento Style) */}
       <ValuePropBento />
       {/* Premium Unified Features Showcase */}
@@ -295,7 +317,13 @@ export default function Home() {
       {/* Selected Projects Showcase */}
       <ProjectShowcase />
       {/* Testimonials Section */}
-      <section className="testimonials-section w-full bg-background dark:bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-border dark:border-white/5">
+      <motion.section 
+        initial={{ opacity: 0, scale: 0.98 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true, margin: "-100px" }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="testimonials-section w-full bg-background dark:bg-[#0a0812] py-16 lg:py-20 relative z-10 overflow-hidden border-t border-border dark:border-white/5"
+      >
         {/* Background decorative elements to match hero */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 dark:bg-[#7c3aed]/10 blur-[120px] rounded-full pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-primary/5 dark:bg-[#4c1d95]/10 blur-[120px] rounded-full pointer-events-none"></div>
@@ -335,11 +363,18 @@ export default function Home() {
             <div className="pointer-events-none absolute inset-y-0 right-0 w-1/3 bg-gradient-to-l from-background dark:from-[#0a0812]"></div>
           </div>
         </div>
-      </section>{" "}
+      </motion.section>{" "}
       {/* Final CTA Section with Vertical Marquee */}
       <CTAWithVerticalMarquee />
       {/* Premium Footer */}
-      <Footer />
+      <motion.div
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <Footer />
+      </motion.div>
     </main>
   );
 }
